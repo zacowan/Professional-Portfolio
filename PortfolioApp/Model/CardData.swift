@@ -15,16 +15,16 @@ class CardData {
     private var leading: String?
     private var image: String?
     
-    init(withDataFromFirebase data: [String : String]) {
+    init(withDataFromFirebase data: [String : Any]) {
         for (key, value) in data {
             if key == "title" {
-                title = value
+                title = value as! String
             } else if key == "subtitle" {
-                subtitle = value
+                subtitle = value as! String
             } else if key == "leading" {
-                leading = value
+                leading = value as! String
             } else if key == "image" {
-                image = value
+                image = value as! String
             }
         }
     }

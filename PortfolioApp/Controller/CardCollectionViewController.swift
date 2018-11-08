@@ -15,6 +15,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private var subtitle: String?
     private let database = AppDelegate.getDatabase()
+    private var cardData = [CardData]()
+    private var currentCell = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,18 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     init(withSubtitle subtitle: String) {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.subtitle = subtitle
+        let colReference = database.collection("\(subtitle.lowercased())Cards")
+        colReference.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    let data = CardData(withDataFromFirebase: document.data())
+                    self.cardData.append(data)
+                }
+            }
+        }
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,7 +74,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 5
+        return cardData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -68,17 +82,14 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! Card
         // Configure the cell
-        database.collection("codeCards").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                }
-            }
-        }
+        // Iterate over data and set the contents
+        let data = cardData[currentCell]
+        cell.setTitleText(toText: data.getTitle())
+        cell.setSubtitleText(toText: data.getSubtitle())
+        cell.setLeadingText(toText: data.getLeading())
+        currentCell += 1
         return cell
     }
 
