@@ -14,6 +14,7 @@
 		7004E143218A4BE4008A3927 /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E142218A4BE4008A3927 /* SubtitleLabel.swift */; };
 		7004E145218A4ECD008A3927 /* LeadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E144218A4ECD008A3927 /* LeadingLabel.swift */; };
 		7004E147218A504D008A3927 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E146218A504D008A3927 /* RoundButton.swift */; };
+		700BAD6A2193E16E009177DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 700BAD692193E16E009177DD /* GoogleService-Info.plist */; };
 		70763C81218BAA860082DDD6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70763C80218BAA860082DDD6 /* Card.swift */; };
 		707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */; };
 		707DACF7218D1ADE0085F6C8 /* CardEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */; };
@@ -48,6 +49,7 @@
 		7004E142218A4BE4008A3927 /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
 		7004E144218A4ECD008A3927 /* LeadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingLabel.swift; sourceTree = "<group>"; };
 		7004E146218A504D008A3927 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		700BAD692193E16E009177DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		70763C80218BAA860082DDD6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryViewController.swift; sourceTree = "<group>"; };
 		707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				709C98412189FB2600207B0E /* Constants.swift */,
 				709C98252189FA8400207B0E /* Assets.xcassets */,
 				709C98272189FA8400207B0E /* LaunchScreen.storyboard */,
+				700BAD692193E16E009177DD /* GoogleService-Info.plist */,
 				709C982A2189FA8400207B0E /* Info.plist */,
 			);
 			path = PortfolioApp;
@@ -282,6 +285,7 @@
 			files = (
 				709C98292189FA8400207B0E /* LaunchScreen.storyboard in Resources */,
 				709C98262189FA8400207B0E /* Assets.xcassets in Resources */,
+				700BAD6A2193E16E009177DD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

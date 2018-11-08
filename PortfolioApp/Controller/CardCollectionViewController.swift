@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifier = "CardCell"
 
 class CardCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private var subtitle: String?
+    private let database = AppDelegate.getDatabase()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +70,15 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         // Configure the cell
+        database.collection("codeCards").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                }
+            }
+        }
         return cell
     }
 

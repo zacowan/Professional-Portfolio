@@ -10,20 +10,23 @@ import Foundation
 
 class CardData {
     
-    private var cardInformation = [String]()
     private var title: String?
     private var subtitle: String?
     private var leading: String?
     private var image: String?
     
-    init(withDataFromFirebase data: [String]) {
-        for element in data {
-            cardInformation.append(element)
+    init(withDataFromFirebase data: [String : String]) {
+        for (key, value) in data {
+            if key == "title" {
+                title = value
+            } else if key == "subtitle" {
+                subtitle = value
+            } else if key == "leading" {
+                leading = value
+            } else if key == "image" {
+                image = value
+            }
         }
-        title = cardInformation[0]
-        subtitle = cardInformation[1]
-        leading = cardInformation[2]
-        image = cardInformation[3]
     }
     
     public func getTitle() -> String {
@@ -40,10 +43,6 @@ class CardData {
     
     public func getImage() -> String {
         return image!
-    }
-    
-    public func getCardInformation() -> [String] {
-        return cardInformation
     }
     
 }
