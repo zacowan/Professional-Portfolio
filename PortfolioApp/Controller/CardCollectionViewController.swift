@@ -37,6 +37,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         }
         tabView.addConstraints()
         setupCollectionView(usingView: tabView)
+        self.collectionView.reloadData()
     }
     
     init(withSubtitle subtitle: String) {
@@ -50,10 +51,10 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
                 for document in querySnapshot!.documents {
                     let data = CardData(withDataFromFirebase: document.data())
                     self.cardData.append(data)
+                    self.collectionView.reloadData()
                 }
             }
         }
-
     }
     
     required init?(coder aDecoder: NSCoder) {
