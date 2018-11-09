@@ -18,13 +18,13 @@ class CardData {
     init(withDataFromFirebase data: [String : Any]) {
         for (key, value) in data {
             if key == "title" {
-                title = value as! String
+                title = (value as! String)
             } else if key == "subtitle" {
-                subtitle = value as! String
+                subtitle = (value as! String)
             } else if key == "leading" {
-                leading = value as! String
+                leading = (value as! String)
             } else if key == "image" {
-                image = value as! String
+                image = (value as! String)
             }
         }
     }
