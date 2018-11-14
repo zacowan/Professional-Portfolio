@@ -91,6 +91,8 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         cell.setTitleText(toText: data.getTitle())
         cell.setSubtitleText(toText: data.getSubtitle())
         cell.setLeadingText(toText: data.getLeading())
+        cell.setImage(fromUrl: data.getImage())
+        cell.setParentViewController(withViewController: self)
         currentCell += 1
         return cell
     }

@@ -14,6 +14,7 @@ class Card: UICollectionViewCell {
     private var subtitleText: String?
     private var leadingText: String?
     private var image: UIImage?
+    private var parentViewController: UIViewController?
     
     private let DISTANCE_FROM_SIDES: CGFloat = 15
     private let DISTANCE_BETWEEN_CARDS: CGFloat = 15
@@ -25,7 +26,8 @@ class Card: UICollectionViewCell {
     }
     
     @objc private func didTapCard() {
-        print("Poop")
+        let newVC = CardEntryViewController()
+        parentViewController?.present(newVC, animated: false, completion: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -146,8 +148,12 @@ class Card: UICollectionViewCell {
         title.text = text
     }
     
-    public func setImage() {
+    public func setImage(fromUrl url: String) {
         // Set the image to a passed in image from firebase
+    }
+    
+    public func setParentViewController(withViewController vc: UIViewController) {
+        parentViewController = vc
     }
     
 }
