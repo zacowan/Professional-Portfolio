@@ -93,6 +93,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         cell.setLeadingText(toText: data.getLeading())
         cell.setImage(fromUrl: data.getImage())
         cell.setParentViewController(withViewController: self)
+        cell.setData(withData: data)
         currentCell += 1
         return cell
     }

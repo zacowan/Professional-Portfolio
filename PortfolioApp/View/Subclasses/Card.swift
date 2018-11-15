@@ -14,6 +14,7 @@ class Card: UICollectionViewCell {
     private var subtitleText: String?
     private var leadingText: String?
     private var image: UIImage?
+    private var data: CardData?
     private var parentViewController: UIViewController?
     
     private let DISTANCE_FROM_SIDES: CGFloat = 15
@@ -26,7 +27,7 @@ class Card: UICollectionViewCell {
     }
     
     @objc private func didTapCard() {
-        let newVC = CardEntryViewController()
+        let newVC = CardEntryViewController(withData: data!)
         parentViewController?.present(newVC, animated: false, completion: nil)
     }
     
@@ -154,6 +155,10 @@ class Card: UICollectionViewCell {
     
     public func setParentViewController(withViewController vc: UIViewController) {
         parentViewController = vc
+    }
+    
+    public func setData(withData d: CardData) {
+        data = d
     }
     
 }

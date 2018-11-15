@@ -9,6 +9,8 @@
 import UIKit
 
 class CardEntryViewController: UIViewController {
+    
+    private var data: CardData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,16 @@ class CardEntryViewController: UIViewController {
             view.addSubview(element)
         }
         cardEntryView.addConstraints()
+        cardEntryView.setData(wtihData: data!)
     }
-
+    
+    init(withData data: CardData) {
+        super.init(nibName: nil, bundle: nil)
+        self.data = data
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

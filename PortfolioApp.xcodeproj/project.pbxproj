@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		37E59DA93B3369408BE1F08F /* Pods_PortfolioAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3575591CDDBA08E6983D5887 /* Pods_PortfolioAppTests.framework */; };
 		4BF5988DE09572C599447BE3 /* Pods_PortfolioApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057A48358C0C927BBF587D9E /* Pods_PortfolioApp.framework */; };
+		70016178219CCA2E00D7B7C3 /* CardEntryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70016177219CCA2E00D7B7C3 /* CardEntryData.swift */; };
 		7004E13E218A41EF008A3927 /* TitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E13D218A41EF008A3927 /* TitleLabel.swift */; };
 		7004E141218A4837008A3927 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E140218A4837008A3927 /* SplashView.swift */; };
 		7004E143218A4BE4008A3927 /* SubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E142218A4BE4008A3927 /* SubtitleLabel.swift */; };
@@ -45,6 +46,7 @@
 		057A48358C0C927BBF587D9E /* Pods_PortfolioApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PortfolioApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3575591CDDBA08E6983D5887 /* Pods_PortfolioAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PortfolioAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2766347C60CD2BC6161DFC /* Pods-PortfolioApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PortfolioApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PortfolioApp/Pods-PortfolioApp.debug.xcconfig"; sourceTree = "<group>"; };
+		70016177219CCA2E00D7B7C3 /* CardEntryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryData.swift; sourceTree = "<group>"; };
 		7004E13D218A41EF008A3927 /* TitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleLabel.swift; sourceTree = "<group>"; };
 		7004E140218A4837008A3927 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		7004E142218A4BE4008A3927 /* SubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleLabel.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		709C98402189FAEF00207B0E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				70016177219CCA2E00D7B7C3 /* CardEntryData.swift */,
 				70F961C3219393F600039CEF /* CardData.swift */,
 				7090C5D52196275C000F95E7 /* DataLoader.swift */,
 			);
@@ -390,6 +393,7 @@
 				70D49770218B69B50039472F /* TabBarController.swift in Sources */,
 				709C981F2189FA8400207B0E /* AppDelegate.swift in Sources */,
 				707DACF7218D1ADE0085F6C8 /* CardEntryView.swift in Sources */,
+				70016178219CCA2E00D7B7C3 /* CardEntryData.swift in Sources */,
 				7004E141218A4837008A3927 /* SplashView.swift in Sources */,
 				70D67C03218CEE620028652C /* CardCollectionViewController.swift in Sources */,
 				7004E145218A4ECD008A3927 /* LeadingLabel.swift in Sources */,
