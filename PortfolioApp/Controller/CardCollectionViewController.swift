@@ -43,15 +43,23 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     init(withSubtitle subtitle: String) {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.subtitle = subtitle
-        let colReference = database.collection("\(subtitle.lowercased())Cards")
+        let collectionName = "\(subtitle.lowercased())Cards"
+        let colReference = database.collection(collectionName)
         colReference.getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error getting documents: \(err)")
+                print("Error getting card documents: \(err)")
             } else {
-                for document in querySnapshot!.documents {
-                    let data = CardData(withDataFromFirebase: document.data())
-                    self.cardData.append(data)
-                    self.collectionView.reloadData()
+                let documents = querySnapshot!.documents
+                for document in documents {
+                    if !(document.documentID.contains("Entry")) {
+                        let data = CardData(withDataFromFirebase: document.data())
+                        let entryData = self.findCardEntryDocument(withCard: document.documentID, withDocs: documents)?.data()
+                        if let unwrappedEntryData = entryData {
+                            data.setEntryData(withDataFromFirebase: unwrappedEntryData)
+                        }
+                        self.cardData.append(data)
+                        self.collectionView.reloadData()
+                    }
                 }
             }
         }
@@ -96,6 +104,15 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         cell.setData(withData: data)
         currentCell += 1
         return cell
+    }
+    
+    private func findCardEntryDocument(withCard card: String, withDocs docs: [QueryDocumentSnapshot]) -> QueryDocumentSnapshot? {
+        for doc in docs {
+            if doc.documentID == "\(card)Entry" {
+                return doc
+            }
+        }
+        return nil
     }
 
 }

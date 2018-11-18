@@ -10,39 +10,17 @@ import Foundation
 
 class CardEntryData {
     
-    private var title: String?
-    private var subtitle: String?
-    private var leading: String?
-    private var image: String?
+    private var data: [String : String]
     
     init(withDataFromFirebase data: [String : Any]) {
+        self.data = [:]
         for (key, value) in data {
-            if key == "title" {
-                title = (value as! String)
-            } else if key == "subtitle" {
-                subtitle = (value as! String)
-            } else if key == "leading" {
-                leading = (value as! String)
-            } else if key == "image" {
-                image = (value as! String)
-            }
+            self.data[key] = (value as! String)
         }
     }
     
-    public func getTitle() -> String {
-        return title!
-    }
-    
-    public func getSubtitle() -> String {
-        return subtitle!
-    }
-    
-    public func getLeading() -> String {
-        return leading!
-    }
-    
-    public func getImage() -> String {
-        return image!
+    public func getData() -> [String : String] {
+        return data
     }
     
 }

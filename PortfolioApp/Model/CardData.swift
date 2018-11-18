@@ -14,6 +14,7 @@ class CardData {
     private var subtitle: String?
     private var leading: String?
     private var image: String?
+    private var entryData: CardEntryData?
     
     init(withDataFromFirebase data: [String : Any]) {
         for (key, value) in data {
@@ -27,6 +28,14 @@ class CardData {
                 image = (value as! String)
             }
         }
+    }
+    
+    public func setEntryData(withDataFromFirebase data: [String : Any]) {
+        entryData = CardEntryData(withDataFromFirebase: data)
+    }
+    
+    public func getEntryData() -> [String : String] {
+        return (entryData?.getData() as! [String : String])
     }
     
     public func getTitle() -> String {
