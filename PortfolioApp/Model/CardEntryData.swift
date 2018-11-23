@@ -14,14 +14,10 @@ class CardEntryData {
     
     init(withDataFromFirebase data: [String : Any]) {
         self.data = (data as! [String : String])
-        print("Entry data: ")
-        for (key, value) in data {
-            print("\(key) , \(value)")
-        }
     }
     
     public func getData() -> [String : String] {
-        return data
+        return self.data
     }
     
 }

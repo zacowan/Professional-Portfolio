@@ -14,6 +14,9 @@ class CardEntryView {
     let view: UIView
     private var elements = [UIView]()
     
+    private let DISTANCE_FROM_SIDES: CGFloat = 20
+    private let DISTANCE_BETWEEN_ITEMS: CGFloat = 20
+    
     init(withView view: UIView) {
         // blah
         self.view = view
@@ -55,12 +58,12 @@ class CardEntryView {
             }
             item.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(item)
-            item.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-            item.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
+            item.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+            item.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
             if previousItem != nil {
-                item.topAnchor.constraint(equalTo: previousItem!.bottomAnchor, constant: 20).isActive = true
+                item.topAnchor.constraint(equalTo: previousItem!.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS).isActive = true
             } else {
-                item.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 80).isActive = true
+                item.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS * 3).isActive = true
             }
             previousItem = item
         }
@@ -105,9 +108,9 @@ class CardEntryView {
     
     private func subtitleLabelConstraints() {
         contentView.addSubview(subtitleLabel)
-        subtitleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        subtitleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
-        subtitleLabel.topAnchor.constraint(equalTo: splashImage.bottomAnchor, constant: 20).isActive = true
+        subtitleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+        subtitleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+        subtitleLabel.topAnchor.constraint(equalTo: splashImage.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS).isActive = true
     }
     
     private let titleLabel: UILabel = {
@@ -118,8 +121,8 @@ class CardEntryView {
     
     private func titleLabelConstraints() {
         contentView.addSubview(titleLabel)
-        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
         titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor).isActive = true
     }
     
