@@ -13,9 +13,10 @@ class CardEntryData {
     private var data: [String : String]
     
     init(withDataFromFirebase data: [String : Any]) {
-        self.data = [:]
+        self.data = (data as! [String : String])
+        print("Entry data: ")
         for (key, value) in data {
-            self.data[key] = (value as! String)
+            print("\(key) , \(value)")
         }
     }
     

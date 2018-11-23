@@ -35,7 +35,10 @@ class CardData {
     }
     
     public func getEntryData() -> [String : String] {
-        return (entryData?.getData() as! [String : String])
+        if let unwrappedData = entryData {
+            return unwrappedData.getData()
+        }
+        return ["p0" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor. ", "p1" : "still broke"]
     }
     
     public func getTitle() -> String {

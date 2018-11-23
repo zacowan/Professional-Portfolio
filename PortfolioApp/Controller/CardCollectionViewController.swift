@@ -104,10 +104,12 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private func findCardEntryDocument(withCard card: String, withDocs docs: [QueryDocumentSnapshot]) -> QueryDocumentSnapshot? {
         for doc in docs {
-            if doc.documentID == "\(card)Entry" {
+            if doc.documentID == "\(card) Entry" {
+                print("Successful poop")
                 return doc
             }
         }
+        print("Unsuccessful poop")
         return nil
     }
 

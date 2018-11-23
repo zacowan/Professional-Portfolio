@@ -41,6 +41,29 @@ class CardEntryView {
     public func setData(wtihData data: CardData) {
         titleLabel.text = data.getTitle()
         subtitleLabel.text = data.getSubtitle().uppercased()
+        let entryData = data.getEntryData()
+        var previousItem: UIView?
+        for (key, value) in entryData {
+            var item = UIView()
+            if key.contains("p") {
+                item = EntryParagraph()
+                (item as! UILabel).text = value
+            } else if key.contains("img") {
+                
+            } else if key.contains("href") {
+                
+            }
+            item.translatesAutoresizingMaskIntoConstraints = false
+            contentView.addSubview(item)
+            item.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
+            item.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
+            if previousItem != nil {
+                item.topAnchor.constraint(equalTo: previousItem!.bottomAnchor, constant: 20).isActive = true
+            } else {
+                item.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 80).isActive = true
+            }
+            previousItem = item
+        }
     }
     
     // Private functions (UI setup and constraint setup)
