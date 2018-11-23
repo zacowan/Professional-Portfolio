@@ -96,10 +96,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         // Configure the cell
         // Iterate over data and set the contents
         let data = cardData[currentCell]
-        cell.setTitleText(toText: data.getTitle())
-        cell.setSubtitleText(toText: data.getSubtitle())
-        cell.setLeadingText(toText: data.getLeading())
-        cell.setImage(fromUrl: data.getImage())
         cell.setParentViewController(withViewController: self)
         cell.setData(withData: data)
         currentCell += 1
