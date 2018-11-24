@@ -33,7 +33,7 @@ class RoundButton: UIButton {
         self.setTitle("Button", for: .normal)
         self.layer.cornerRadius = 30
         self.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        self.frame.size.width = 200
     }
     
 }

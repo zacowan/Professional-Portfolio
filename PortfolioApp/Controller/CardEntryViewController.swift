@@ -27,6 +27,7 @@ class CardEntryViewController: UIViewController {
         cardEntryView.addConstraints()
         cardEntryView.setData(wtihData: data!)
         cardEntryView.getExitButton().addTarget(self, action: #selector(exitViewController), for: .touchUpInside)
+        cardEntryView.adjustContentHeight()
     }
     
     @objc private func exitViewController() {

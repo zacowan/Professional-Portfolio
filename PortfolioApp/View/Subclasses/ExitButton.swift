@@ -28,7 +28,7 @@ class ExitButton: UIButton {
     }
     
     private func applyStyling() {
-        let buttonSize: CGFloat = 50
+        let buttonSize: CGFloat = 40
         self.backgroundColor = UIColor.gray
         self.layer.opacity = 0.5
         self.setTitleColor(Colors.FontColors.button, for: .normal)
