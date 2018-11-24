@@ -44,18 +44,34 @@ class CardEntryView {
     public func setData(wtihData data: CardData) {
         titleLabel.text = data.getTitle()
         subtitleLabel.text = data.getSubtitle().uppercased()
+        
         let entryData = data.getEntryData()
+        let orderedEntryData = Utilities.getOrderedDictionary(fromDic: entryData)
         var previousItem: UIView?
-        for (key, value) in entryData {
+        
+        for i in 0 ..< orderedEntryData.count {
             var item = UIView()
+            let dataPair = orderedEntryData[i]
+            let key = dataPair![0]
+            let value = dataPair![1]
+            
             if key.contains("p") {
-                item = EntryParagraph()
-                (item as! UILabel).text = value
+                let p = EntryParagraph()
+                p.text = value
+                item = p
             } else if key.contains("img") {
-                
+                let img = UIImageView()
+                img.backgroundColor = Colors.highlight
+                img.heightAnchor.constraint(equalToConstant: 250).isActive = true
+                img.layer.cornerRadius = 25
+                item = img
             } else if key.contains("href") {
-                
+                let href = RoundButton()
+                href.setTitle("View", for: .normal)
+                href.titleLabel?.font = Fonts.button
+                item = href
             }
+            
             item.translatesAutoresizingMaskIntoConstraints = false
             contentView.addSubview(item)
             item.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
@@ -94,10 +110,11 @@ class CardEntryView {
     private func contentViewConstraints() {
         scrollView.addSubview(contentView)
         contentView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: 9000).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 1800).isActive = true
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
         contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
+        scrollView.contentSize = CGSize.init(width: contentView.frame.size.width, height: contentView.frame.size.height)
     }
     
     private let subtitleLabel: UILabel = {

@@ -30,6 +30,7 @@
 		70D49770218B69B50039472F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4976F218B69B50039472F /* TabBarController.swift */; };
 		70D49774218B6B420039472F /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D49773218B6B420039472F /* TabView.swift */; };
 		70D67C03218CEE620028652C /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D67C02218CEE620028652C /* CardCollectionViewController.swift */; };
+		70D69D1F21A8D3C900767923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D69D1E21A8D3C900767923 /* Utilities.swift */; };
 		70F961C4219393F600039CEF /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F961C3219393F600039CEF /* CardData.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		70D4976F218B69B50039472F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		70D49773218B6B420039472F /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		70D67C02218CEE620028652C /* CardCollectionViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
+		70D69D1E21A8D3C900767923 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		70F961C3219393F600039CEF /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardData.swift; path = PortfolioApp/Model/CardData.swift; sourceTree = SOURCE_ROOT; };
 		936FE286CE24D2BF797BEEBA /* Pods-PortfolioApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PortfolioApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PortfolioApp/Pods-PortfolioApp.release.xcconfig"; sourceTree = "<group>"; };
 		E36F627D35A977BEA94996F0 /* Pods-PortfolioAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PortfolioAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PortfolioAppTests/Pods-PortfolioAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				70016177219CCA2E00D7B7C3 /* CardEntryData.swift */,
 				70F961C3219393F600039CEF /* CardData.swift */,
 				7090C5D52196275C000F95E7 /* DataLoader.swift */,
+				70D69D1E21A8D3C900767923 /* Utilities.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,6 +405,7 @@
 				70D67C03218CEE620028652C /* CardCollectionViewController.swift in Sources */,
 				7004E145218A4ECD008A3927 /* LeadingLabel.swift in Sources */,
 				70763C81218BAA860082DDD6 /* Card.swift in Sources */,
+				70D69D1F21A8D3C900767923 /* Utilities.swift in Sources */,
 				707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */,
 				7090C5D62196275C000F95E7 /* DataLoader.swift in Sources */,
 				7004E13E218A41EF008A3927 /* TitleLabel.swift in Sources */,
