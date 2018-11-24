@@ -13,20 +13,19 @@ class CardEntryView {
     
     let view: UIView
     private var elements = [UIView]()
-    private var dynamicHeightElements = [UIView]()
     
     private let DISTANCE_FROM_SIDES: CGFloat = 20
     private let DISTANCE_BETWEEN_ITEMS: CGFloat = 20
     private let DISTANCE_BETWEEN_TITLE_AND_CONTENT: CGFloat = 60
+    private let DISTANCE_FROM_BOTTOM: CGFloat = 80
     private let IMAGE_HEIGHT: CGFloat = 400
     private let SUBIMAGE_HEIGHT: CGFloat = 250
     
-    private var scrollViewHeight: CGFloat = 2000
+    private var scrollViewHeight: CGFloat = 0
     
     init(withView view: UIView) {
         // blah
-        scrollViewHeight = IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.frame.height + titleLabel.frame.height
-        print("Init \(scrollViewHeight)")
+        scrollViewHeight += IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.intrinsicContentSize.height + titleLabel.intrinsicContentSize.height
         self.view = view
         elements += [scrollView, subtitleLabel, titleLabel, splashImage, exitButton]
         for element in elements {
@@ -66,17 +65,20 @@ class CardEntryView {
             if key.contains("p") {
                 let p = EntryParagraph()
                 p.text = value
+                scrollViewHeight += p.intrinsicContentSize.height
                 item = p
             } else if key.contains("img") {
                 let img = UIImageView()
                 img.backgroundColor = Colors.highlight
                 img.heightAnchor.constraint(equalToConstant: SUBIMAGE_HEIGHT).isActive = true
                 img.layer.cornerRadius = 25
+                scrollViewHeight += SUBIMAGE_HEIGHT
                 item = img
             } else if key.contains("href") {
                 let href = RoundButton()
                 href.setTitle("View", for: .normal)
                 href.titleLabel?.font = Fonts.button
+                scrollViewHeight += CGSize(width: 0, height: 60).height
                 item = href
             }
             
@@ -91,26 +93,21 @@ class CardEntryView {
                 item.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: DISTANCE_BETWEEN_TITLE_AND_CONTENT).isActive = true
                 scrollViewHeight += DISTANCE_BETWEEN_TITLE_AND_CONTENT
             }
-            dynamicHeightElements.append(item)
             previousItem = item
         }
-        scrollViewHeight += DISTANCE_BETWEEN_ITEMS * 2
+        scrollViewHeight += DISTANCE_BETWEEN_ITEMS
+        scrollViewHeight += DISTANCE_FROM_BOTTOM
         print(scrollViewHeight)
+        scrollView.contentSize.height = scrollViewHeight
     }
     
     // Private functions (UI setup and constraint setup)
-    
-    public func adjustContentHeight() {
-        for item in dynamicHeightElements {
-            scrollViewHeight += item.frame.height
-        }
-        scrollView.contentSize.height = 9000
-    }
     
     private let scrollView: UIScrollView = {
         let subview = UIScrollView()
         subview.alwaysBounceVertical = true
         subview.contentSize.height = 9000
+        subview.contentInsetAdjustmentBehavior = .never
         return subview
     }()
     
