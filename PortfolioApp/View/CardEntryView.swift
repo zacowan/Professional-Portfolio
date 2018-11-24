@@ -70,7 +70,6 @@ class CardEntryView {
             } else if key.contains("img") {
                 let img = UIImageView()
                 img.backgroundColor = Colors.highlight
-                img.heightAnchor.constraint(equalToConstant: SUBIMAGE_HEIGHT).isActive = true
                 img.layer.cornerRadius = 25
                 scrollViewHeight += SUBIMAGE_HEIGHT
                 item = img
@@ -78,14 +77,25 @@ class CardEntryView {
                 let href = RoundButton()
                 href.setTitle("View", for: .normal)
                 href.titleLabel?.font = Fonts.button
-                scrollViewHeight += CGSize(width: 0, height: 60).height
+                scrollViewHeight += 60
                 item = href
             }
             
-            item.translatesAutoresizingMaskIntoConstraints = false
             scrollView.addSubview(item)
-            item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-            item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+            item.translatesAutoresizingMaskIntoConstraints = false
+            
+            if key.contains("p") {
+                item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+                item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+            } else if key.contains("img") {
+                item.heightAnchor.constraint(equalToConstant: SUBIMAGE_HEIGHT).isActive = true
+                item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+                item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+            } else if key.contains("href") {
+                item.widthAnchor.constraint(equalToConstant: 200).isActive = true
+                item.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+            }
+
             if previousItem != nil {
                 item.topAnchor.constraint(equalTo: previousItem!.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS).isActive = true
                 scrollViewHeight += DISTANCE_BETWEEN_ITEMS
