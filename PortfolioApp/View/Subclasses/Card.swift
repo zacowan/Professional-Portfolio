@@ -23,6 +23,7 @@ class Card: UICollectionViewCell {
     }
     
     @objc private func didTapCard() {
+        TabBarController.currentTabIndex = TabBarController.subtitleIndexes[(parentViewController as! CardCollectionViewController).getSubtitle()!]!
         let newVC = CardEntryViewController(withData: data!)
         parentViewController?.present(newVC, animated: false, completion: nil)
     }

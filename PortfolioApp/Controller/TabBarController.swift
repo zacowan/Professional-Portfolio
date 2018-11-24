@@ -9,22 +9,24 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    
+    private static let subtitles = ["Home", "Code", "Design"]
+    public static let subtitleIndexes = ["Home" : 0, "Code" : 1, "Design" : 2]
+    
+    private let homeViewController = CardCollectionViewController(withSubtitle: TabBarController.subtitles[0])
+    private let codeViewController = CardCollectionViewController(withSubtitle: TabBarController.subtitles[1])
+    private let designViewController = CardCollectionViewController(withSubtitle: TabBarController.subtitles[2])
+    
+    public static var currentTabIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        let homeTitle = "Home"
-        let codeTitle = "Code"
-        let designTitle = "Design"
 
-        let homeViewController = CardCollectionViewController(withSubtitle: homeTitle)
-        homeViewController.tabBarItem = UITabBarItem(title: homeTitle, image: UIImage(named: homeTitle), tag: 0)
-        let codeViewController = CardCollectionViewController(withSubtitle: codeTitle)
-        codeViewController.tabBarItem = UITabBarItem(title: codeTitle, image: UIImage(named: codeTitle), tag: 1)
-        let designViewController = CardCollectionViewController(withSubtitle: designTitle)
-        designViewController.tabBarItem = UITabBarItem(title: designTitle, image: UIImage(named: designTitle), tag: 2)
+        homeViewController.tabBarItem = UITabBarItem(title: TabBarController.subtitles[0], image: UIImage(named: TabBarController.subtitles[0]), tag: 0)
+        codeViewController.tabBarItem = UITabBarItem(title: TabBarController.subtitles[1], image: UIImage(named: TabBarController.subtitles[1]), tag: 1)
+        designViewController.tabBarItem = UITabBarItem(title: TabBarController.subtitles[2], image: UIImage(named: TabBarController.subtitles[2]), tag: 2)
         
         tabBar.tintColor = Colors.highlight
         

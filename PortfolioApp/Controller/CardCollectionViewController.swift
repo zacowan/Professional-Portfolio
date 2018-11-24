@@ -110,5 +110,9 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         }
         return nil
     }
+    
+    public func getSubtitle() -> String? {
+        return subtitle
+    }
 
 }

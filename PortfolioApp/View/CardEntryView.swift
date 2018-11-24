@@ -20,7 +20,7 @@ class CardEntryView {
     init(withView view: UIView) {
         // blah
         self.view = view
-        elements += [scrollView, contentView, subtitleLabel, titleLabel, splashImage]
+        elements += [scrollView, contentView, subtitleLabel, titleLabel, splashImage, exitButton]
         for element in elements {
             element.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -39,6 +39,7 @@ class CardEntryView {
         splashImageConstraints()
         subtitleLabelConstraints()
         titleLabelConstraints()
+        exitButtonConstraints()
     }
     
     public func setData(wtihData data: CardData) {
@@ -155,6 +156,22 @@ class CardEntryView {
         splashImage.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         splashImage.heightAnchor.constraint(equalToConstant: 400).isActive = true
         splashImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+    }
+    
+    private let exitButton: UIButton = {
+        let button = ExitButton()
+        button.titleLabel?.font = Fonts.button
+        return button
+    }()
+    
+    private func exitButtonConstraints() {
+        contentView.addSubview(exitButton)
+        exitButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+        exitButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+    }
+    
+    public func getExitButton() -> UIButton {
+        return exitButton
     }
     
 }
