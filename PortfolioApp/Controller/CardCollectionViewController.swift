@@ -98,7 +98,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         let data = cardData[currentCell]
         cell.setParentViewController(withViewController: self)
         cell.setData(withData: data)
-        currentCell += 1
+        currentCell += (currentCell < cardData.count - 1) ? 1 : 0
         return cell
     }
     
