@@ -20,7 +20,7 @@ class CardEntryView {
     init(withView view: UIView) {
         // blah
         self.view = view
-        elements += [scrollView, contentView, subtitleLabel, titleLabel, splashImage, exitButton]
+        elements += [scrollView, subtitleLabel, titleLabel, splashImage, exitButton]
         for element in elements {
             element.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -29,13 +29,12 @@ class CardEntryView {
     // Public functions
     
     public func getElements() -> [UIView] {
-        return [scrollView]
+        return [scrollView, exitButton]
     }
     
     // NOTE: Order matters when adding constraints
     public func addConstraints() {
         scrollViewConstraints()
-        contentViewConstraints()
         splashImageConstraints()
         subtitleLabelConstraints()
         titleLabelConstraints()
@@ -74,9 +73,9 @@ class CardEntryView {
             }
             
             item.translatesAutoresizingMaskIntoConstraints = false
-            contentView.addSubview(item)
-            item.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-            item.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+            scrollView.addSubview(item)
+            item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+            item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
             if previousItem != nil {
                 item.topAnchor.constraint(equalTo: previousItem!.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS).isActive = true
             } else {
@@ -92,6 +91,7 @@ class CardEntryView {
         let subview = UIScrollView()
         subview.alwaysBounceVertical = true
         subview.contentInset.top = 0
+        subview.contentSize.height = 2000
         return subview
     }()
     
@@ -102,22 +102,6 @@ class CardEntryView {
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    // Scroll view can only have 1 subview (a content view)
-    private let contentView: UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    private func contentViewConstraints() {
-        scrollView.addSubview(contentView)
-        contentView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: 1800).isActive = true
-        contentView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        contentView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
-        contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
-        scrollView.contentSize = CGSize.init(width: contentView.frame.size.width, height: contentView.frame.size.height)
-    }
-    
     private let subtitleLabel: UILabel = {
         let label = SubtitleLabel()
         label.text = "test subtitle"
@@ -125,9 +109,9 @@ class CardEntryView {
     }()
     
     private func subtitleLabelConstraints() {
-        contentView.addSubview(subtitleLabel)
-        subtitleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-        subtitleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+        scrollView.addSubview(subtitleLabel)
+        subtitleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+        subtitleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
         subtitleLabel.topAnchor.constraint(equalTo: splashImage.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS).isActive = true
     }
     
@@ -138,9 +122,9 @@ class CardEntryView {
     }()
     
     private func titleLabelConstraints() {
-        contentView.addSubview(titleLabel)
-        titleLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+        scrollView.addSubview(titleLabel)
+        titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
         titleLabel.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor).isActive = true
     }
     
@@ -151,11 +135,11 @@ class CardEntryView {
     }()
     
     private func splashImageConstraints() {
-        contentView.addSubview(splashImage)
-        splashImage.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        splashImage.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+        scrollView.addSubview(splashImage)
+        splashImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        splashImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         splashImage.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        splashImage.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        splashImage.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
     }
     
     private let exitButton: UIButton = {
@@ -165,9 +149,8 @@ class CardEntryView {
     }()
     
     private func exitButtonConstraints() {
-        contentView.addSubview(exitButton)
-        exitButton.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
-        exitButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+        exitButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+        exitButton.topAnchor.constraint(equalTo: view.topAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
     }
     
     public func getExitButton() -> UIButton {
