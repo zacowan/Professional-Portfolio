@@ -51,6 +51,7 @@ class CardEntryView {
     public func setData(wtihData data: CardData) {
         titleLabel.text = data.getTitle()
         subtitleLabel.text = data.getSubtitle().uppercased()
+        splashImage.imageFromServerURL(data.getImageUrlString(), placeHolder: UIImage())
         
         let entryData = data.getEntryData()
         let orderedEntryData = Utilities.getOrderedDictionary(fromDic: entryData)
@@ -71,6 +72,9 @@ class CardEntryView {
                 let img = UIImageView()
                 img.backgroundColor = Colors.highlight
                 img.layer.cornerRadius = 25
+                img.imageFromServerURL(value, placeHolder: UIImage())
+                img.contentMode = .scaleAspectFill
+                img.clipsToBounds = true
                 scrollViewHeight += SUBIMAGE_HEIGHT
                 item = img
             } else if key.contains("href") {

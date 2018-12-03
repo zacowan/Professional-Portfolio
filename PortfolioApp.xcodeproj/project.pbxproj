@@ -28,6 +28,8 @@
 		709C98292189FA8400207B0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709C98272189FA8400207B0E /* LaunchScreen.storyboard */; };
 		709C98342189FA8400207B0E /* PortfolioAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C98332189FA8400207B0E /* PortfolioAppTests.swift */; };
 		709C98422189FB2600207B0E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C98412189FB2600207B0E /* Constants.swift */; };
+		70D12C7E21B5D2D20005ABD2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D12C7D21B5D2D20005ABD2 /* LoadingView.swift */; };
+		70D12C8021B5D3450005ABD2 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D12C7F21B5D3450005ABD2 /* LoadingViewController.swift */; };
 		70D49770218B69B50039472F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4976F218B69B50039472F /* TabBarController.swift */; };
 		70D49774218B6B420039472F /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D49773218B6B420039472F /* TabView.swift */; };
 		70D67C03218CEE620028652C /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D67C02218CEE620028652C /* CardCollectionViewController.swift */; };
@@ -72,6 +74,8 @@
 		709C98332189FA8400207B0E /* PortfolioAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioAppTests.swift; sourceTree = "<group>"; };
 		709C98352189FA8400207B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		709C98412189FB2600207B0E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		70D12C7D21B5D2D20005ABD2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		70D12C7F21B5D3450005ABD2 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		70D4976F218B69B50039472F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		70D49773218B6B420039472F /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		70D67C02218CEE620028652C /* CardCollectionViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 		709C983E2189FADF00207B0E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				70D12C7F21B5D3450005ABD2 /* LoadingViewController.swift */,
 				709C98202189FA8400207B0E /* SplashViewController.swift */,
 				70D4976F218B69B50039472F /* TabBarController.swift */,
 				70D67C02218CEE620028652C /* CardCollectionViewController.swift */,
@@ -179,6 +184,7 @@
 				7004E140218A4837008A3927 /* SplashView.swift */,
 				70D49773218B6B420039472F /* TabView.swift */,
 				707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */,
+				70D12C7D21B5D2D20005ABD2 /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +406,7 @@
 				70D49774218B6B420039472F /* TabView.swift in Sources */,
 				7004E147218A504D008A3927 /* RoundButton.swift in Sources */,
 				709C98212189FA8400207B0E /* SplashViewController.swift in Sources */,
+				70D12C7E21B5D2D20005ABD2 /* LoadingView.swift in Sources */,
 				70D49770218B69B50039472F /* TabBarController.swift in Sources */,
 				7048843921A8DC85008C356E /* ExitButton.swift in Sources */,
 				709C981F2189FA8400207B0E /* AppDelegate.swift in Sources */,
@@ -413,6 +420,7 @@
 				70D69D1F21A8D3C900767923 /* Utilities.swift in Sources */,
 				707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */,
 				7004E13E218A41EF008A3927 /* TitleLabel.swift in Sources */,
+				70D12C8021B5D3450005ABD2 /* LoadingViewController.swift in Sources */,
 				7004E143218A4BE4008A3927 /* SubtitleLabel.swift in Sources */,
 				709C98422189FB2600207B0E /* Constants.swift in Sources */,
 			);

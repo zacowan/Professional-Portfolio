@@ -23,14 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-        AppDelegate.database = Firestore.firestore()
-        let vc = UIViewController()
-        vc.view.backgroundColor = Colors.background
+        let vc = LoadingViewController()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
-        vc.present(SplashViewController(), animated: true, completion: nil)
-        DataLoader.fetchData(AppDelegate.database!)
+        AppDelegate.database = Firestore.firestore()
+        DataLoader.fetchData(AppDelegate.database!, vc)
         return true
     }
 

@@ -15,7 +15,7 @@ class DataLoader {
     
     public static var data: [String : [CardData]] = [:]
     
-    public static func fetchData(_ database: Firestore) {
+    public static func fetchData(_ database: Firestore, _ loadingViewController: UIViewController) {
         for subtitle in TabBarController.subtitles {
             let collectionName = "\(subtitle.lowercased())Cards"
             let collection = database.collection(collectionName)
@@ -38,10 +38,12 @@ class DataLoader {
                         }
                     }
                     DataLoader.data[subtitle] = dataCollection
+                    if DataLoader.data.count >= 3 {
+                        loadingViewController.present(SplashViewController(), animated: true, completion: nil)
+                    }
                 }
             }
         }
-        
     }
     
     private static func findCardEntryDocument(withCard card: String, withDocs docs: [QueryDocumentSnapshot]) -> QueryDocumentSnapshot? {
