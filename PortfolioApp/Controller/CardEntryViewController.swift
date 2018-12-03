@@ -26,6 +26,13 @@ class CardEntryViewController: UIViewController {
         }
         cardEntryView.addConstraints()
         cardEntryView.setData(wtihData: data!)
+        cardEntryView.getExitButton().addTarget(self, action: #selector(exitViewController), for: .touchUpInside)
+    }
+    
+    @objc private func exitViewController() {
+        let newVC = TabBarController()
+        newVC.selectedViewController! = newVC.viewControllers![TabBarController.currentTabIndex]
+        present(newVC, animated: false, completion: nil)
     }
     
     init(withData data: CardData) {

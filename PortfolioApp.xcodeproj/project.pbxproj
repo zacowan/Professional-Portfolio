@@ -16,19 +16,24 @@
 		7004E145218A4ECD008A3927 /* LeadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E144218A4ECD008A3927 /* LeadingLabel.swift */; };
 		7004E147218A504D008A3927 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E146218A504D008A3927 /* RoundButton.swift */; };
 		700BAD6A2193E16E009177DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 700BAD692193E16E009177DD /* GoogleService-Info.plist */; };
+		700DA1EB21A8B8E000DEF276 /* EntryParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DA1EA21A8B8E000DEF276 /* EntryParagraph.swift */; };
+		7048843921A8DC85008C356E /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7048843821A8DC85008C356E /* ExitButton.swift */; };
+		7060721221B5ACCF002DC948 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060721121B5ACCF002DC948 /* DataLoader.swift */; };
 		70763C81218BAA860082DDD6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70763C80218BAA860082DDD6 /* Card.swift */; };
 		707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */; };
 		707DACF7218D1ADE0085F6C8 /* CardEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */; };
-		7090C5D62196275C000F95E7 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7090C5D52196275C000F95E7 /* DataLoader.swift */; };
 		709C981F2189FA8400207B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C981E2189FA8400207B0E /* AppDelegate.swift */; };
 		709C98212189FA8400207B0E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C98202189FA8400207B0E /* SplashViewController.swift */; };
 		709C98262189FA8400207B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 709C98252189FA8400207B0E /* Assets.xcassets */; };
 		709C98292189FA8400207B0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 709C98272189FA8400207B0E /* LaunchScreen.storyboard */; };
 		709C98342189FA8400207B0E /* PortfolioAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C98332189FA8400207B0E /* PortfolioAppTests.swift */; };
 		709C98422189FB2600207B0E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C98412189FB2600207B0E /* Constants.swift */; };
+		70D12C7E21B5D2D20005ABD2 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D12C7D21B5D2D20005ABD2 /* LoadingView.swift */; };
+		70D12C8021B5D3450005ABD2 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D12C7F21B5D3450005ABD2 /* LoadingViewController.swift */; };
 		70D49770218B69B50039472F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D4976F218B69B50039472F /* TabBarController.swift */; };
 		70D49774218B6B420039472F /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D49773218B6B420039472F /* TabView.swift */; };
 		70D67C03218CEE620028652C /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D67C02218CEE620028652C /* CardCollectionViewController.swift */; };
+		70D69D1F21A8D3C900767923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D69D1E21A8D3C900767923 /* Utilities.swift */; };
 		70F961C4219393F600039CEF /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F961C3219393F600039CEF /* CardData.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +58,12 @@
 		7004E144218A4ECD008A3927 /* LeadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeadingLabel.swift; sourceTree = "<group>"; };
 		7004E146218A504D008A3927 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		700BAD692193E16E009177DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		700DA1EA21A8B8E000DEF276 /* EntryParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryParagraph.swift; sourceTree = "<group>"; };
+		7048843821A8DC85008C356E /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
+		7060721121B5ACCF002DC948 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		70763C80218BAA860082DDD6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryViewController.swift; sourceTree = "<group>"; };
 		707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryView.swift; sourceTree = "<group>"; };
-		7090C5D52196275C000F95E7 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		709C981B2189FA8400207B0E /* PortfolioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortfolioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		709C981E2189FA8400207B0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		709C98202189FA8400207B0E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -67,9 +74,12 @@
 		709C98332189FA8400207B0E /* PortfolioAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioAppTests.swift; sourceTree = "<group>"; };
 		709C98352189FA8400207B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		709C98412189FB2600207B0E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		70D12C7D21B5D2D20005ABD2 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		70D12C7F21B5D3450005ABD2 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		70D4976F218B69B50039472F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		70D49773218B6B420039472F /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		70D67C02218CEE620028652C /* CardCollectionViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
+		70D69D1E21A8D3C900767923 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		70F961C3219393F600039CEF /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardData.swift; path = PortfolioApp/Model/CardData.swift; sourceTree = SOURCE_ROOT; };
 		936FE286CE24D2BF797BEEBA /* Pods-PortfolioApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PortfolioApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PortfolioApp/Pods-PortfolioApp.release.xcconfig"; sourceTree = "<group>"; };
 		E36F627D35A977BEA94996F0 /* Pods-PortfolioAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PortfolioAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PortfolioAppTests/Pods-PortfolioAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +114,8 @@
 				7004E144218A4ECD008A3927 /* LeadingLabel.swift */,
 				7004E146218A504D008A3927 /* RoundButton.swift */,
 				70763C80218BAA860082DDD6 /* Card.swift */,
+				700DA1EA21A8B8E000DEF276 /* EntryParagraph.swift */,
+				7048843821A8DC85008C356E /* ExitButton.swift */,
 			);
 			path = Subclasses;
 			sourceTree = "<group>";
@@ -156,6 +168,7 @@
 		709C983E2189FADF00207B0E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				70D12C7F21B5D3450005ABD2 /* LoadingViewController.swift */,
 				709C98202189FA8400207B0E /* SplashViewController.swift */,
 				70D4976F218B69B50039472F /* TabBarController.swift */,
 				70D67C02218CEE620028652C /* CardCollectionViewController.swift */,
@@ -171,6 +184,7 @@
 				7004E140218A4837008A3927 /* SplashView.swift */,
 				70D49773218B6B420039472F /* TabView.swift */,
 				707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */,
+				70D12C7D21B5D2D20005ABD2 /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -180,7 +194,8 @@
 			children = (
 				70016177219CCA2E00D7B7C3 /* CardEntryData.swift */,
 				70F961C3219393F600039CEF /* CardData.swift */,
-				7090C5D52196275C000F95E7 /* DataLoader.swift */,
+				70D69D1E21A8D3C900767923 /* Utilities.swift */,
+				7060721121B5ACCF002DC948 /* DataLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -386,21 +401,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7060721221B5ACCF002DC948 /* DataLoader.swift in Sources */,
 				70F961C4219393F600039CEF /* CardData.swift in Sources */,
 				70D49774218B6B420039472F /* TabView.swift in Sources */,
 				7004E147218A504D008A3927 /* RoundButton.swift in Sources */,
 				709C98212189FA8400207B0E /* SplashViewController.swift in Sources */,
+				70D12C7E21B5D2D20005ABD2 /* LoadingView.swift in Sources */,
 				70D49770218B69B50039472F /* TabBarController.swift in Sources */,
+				7048843921A8DC85008C356E /* ExitButton.swift in Sources */,
 				709C981F2189FA8400207B0E /* AppDelegate.swift in Sources */,
 				707DACF7218D1ADE0085F6C8 /* CardEntryView.swift in Sources */,
 				70016178219CCA2E00D7B7C3 /* CardEntryData.swift in Sources */,
 				7004E141218A4837008A3927 /* SplashView.swift in Sources */,
+				700DA1EB21A8B8E000DEF276 /* EntryParagraph.swift in Sources */,
 				70D67C03218CEE620028652C /* CardCollectionViewController.swift in Sources */,
 				7004E145218A4ECD008A3927 /* LeadingLabel.swift in Sources */,
 				70763C81218BAA860082DDD6 /* Card.swift in Sources */,
+				70D69D1F21A8D3C900767923 /* Utilities.swift in Sources */,
 				707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */,
-				7090C5D62196275C000F95E7 /* DataLoader.swift in Sources */,
 				7004E13E218A41EF008A3927 /* TitleLabel.swift in Sources */,
+				70D12C8021B5D3450005ABD2 /* LoadingViewController.swift in Sources */,
 				7004E143218A4BE4008A3927 /* SubtitleLabel.swift in Sources */,
 				709C98422189FB2600207B0E /* Constants.swift in Sources */,
 			);

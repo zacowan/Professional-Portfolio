@@ -95,6 +95,7 @@ class SplashView {
     private func exploreButtonConstraints() {
         exploreButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         exploreButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -DISTANCE_FROM_BOTTOM).isActive = true
+        exploreButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
     }
     
 }

@@ -10,10 +10,6 @@ import UIKit
 
 class Card: UICollectionViewCell {
     
-    private var titleText: String?
-    private var subtitleText: String?
-    private var leadingText: String?
-    private var image: UIImage?
     private var data: CardData?
     private var parentViewController: UIViewController?
     
@@ -27,6 +23,7 @@ class Card: UICollectionViewCell {
     }
     
     @objc private func didTapCard() {
+        TabBarController.currentTabIndex = TabBarController.subtitleIndexes[(parentViewController as! CardCollectionViewController).getSubtitle()!]!
         let newVC = CardEntryViewController(withData: data!)
         parentViewController?.present(newVC, animated: false, completion: nil)
     }
@@ -133,32 +130,18 @@ class Card: UICollectionViewCell {
         leading.topAnchor.constraint(equalTo: title.bottomAnchor).isActive = true
     }
     
-    // The following functions will be used to change the text after receiving data from firebase
-    public func setLeadingText(toText text: String) {
-        leadingText = text
-        leading.text = text
-    }
-    
-    public func setSubtitleText(toText text: String) {
-        subtitleText = text
-        subtitle.text = text
-    }
-    
-    public func setTitleText(toText text: String) {
-        titleText = text
-        title.text = text
-    }
-    
-    public func setImage(fromUrl url: String) {
-        // Set the image to a passed in image from firebase
-    }
-    
     public func setParentViewController(withViewController vc: UIViewController) {
         parentViewController = vc
     }
     
     public func setData(withData d: CardData) {
         data = d
+        title.text = d.getTitle()
+        subtitle.text = d.getSubtitle()
+        leading.text = d.getLeading()
+        
+        let imageUrl = d.getImageUrlString()
+        imageView.imageFromServerURL(imageUrl, placeHolder: UIImage())
     }
     
 }

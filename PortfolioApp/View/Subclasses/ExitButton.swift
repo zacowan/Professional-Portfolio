@@ -1,14 +1,14 @@
 //
-//  RoundButton.swift
+//  ExitButton.swift
 //  PortfolioApp
 //
-//  Created by Zachary Cowan on 10/31/18.
+//  Created by Zachary Cowan on 11/23/18.
 //  Copyright © 2018 Zachary Cowan. All rights reserved.
 //
 
 import UIKit
 
-class RoundButton: UIButton {
+class ExitButton: UIButton {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -28,12 +28,14 @@ class RoundButton: UIButton {
     }
     
     private func applyStyling() {
-        self.backgroundColor = Colors.highlight
+        let buttonSize: CGFloat = 40
+        self.backgroundColor = UIColor.gray
+        self.layer.opacity = 0.5
         self.setTitleColor(Colors.FontColors.button, for: .normal)
-        self.setTitle("Button", for: .normal)
-        self.layer.cornerRadius = 30
-        self.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        self.frame.size.width = 200
+        self.setTitle("X", for: .normal)
+        self.layer.cornerRadius = buttonSize / 2
+        self.heightAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        self.widthAnchor.constraint(equalToConstant: buttonSize).isActive = true
     }
-    
+
 }

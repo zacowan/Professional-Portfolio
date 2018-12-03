@@ -1,14 +1,14 @@
 //
-//  RoundButton.swift
+//  EntryParagraph.swift
 //  PortfolioApp
 //
-//  Created by Zachary Cowan on 10/31/18.
+//  Created by Zachary Cowan on 11/23/18.
 //  Copyright © 2018 Zachary Cowan. All rights reserved.
 //
 
 import UIKit
 
-class RoundButton: UIButton {
+class EntryParagraph: UILabel {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -28,12 +28,11 @@ class RoundButton: UIButton {
     }
     
     private func applyStyling() {
-        self.backgroundColor = Colors.highlight
-        self.setTitleColor(Colors.FontColors.button, for: .normal)
-        self.setTitle("Button", for: .normal)
-        self.layer.cornerRadius = 30
-        self.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        self.frame.size.width = 200
+        self.font = Fonts.cardEntryBody
+        self.textColor = Colors.FontColors.body
+        self.textAlignment = .left
+        self.numberOfLines = 12
+        self.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
     }
-    
+
 }

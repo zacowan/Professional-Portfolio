@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import Firebase
 
 private let reuseIdentifier = "CardCell"
 
 class CardCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private var subtitle: String?
-    private let database = AppDelegate.getDatabase()
     private var cardData = [CardData]()
     private var currentCell = 0
 
@@ -43,18 +41,12 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     init(withSubtitle subtitle: String) {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.subtitle = subtitle
-        let colReference = database.collection("\(subtitle.lowercased())Cards")
-        colReference.getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    let data = CardData(withDataFromFirebase: document.data())
-                    self.cardData.append(data)
-                    self.collectionView.reloadData()
-                }
-            }
+        
+        for data in DataLoader.data[subtitle]! {
+            cardData.append(data)
         }
+        
+        collectionView.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -63,7 +55,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private func setupCollectionView(usingView tabView: TabView) {
         collectionView.backgroundColor = Colors.background
-        collectionView.showsVerticalScrollIndicator = false
+        //collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -88,14 +80,14 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         // Configure the cell
         // Iterate over data and set the contents
         let data = cardData[currentCell]
-        cell.setTitleText(toText: data.getTitle())
-        cell.setSubtitleText(toText: data.getSubtitle())
-        cell.setLeadingText(toText: data.getLeading())
-        cell.setImage(fromUrl: data.getImage())
         cell.setParentViewController(withViewController: self)
         cell.setData(withData: data)
-        currentCell += 1
+        currentCell += (currentCell < cardData.count - 1) ? 1 : 0
         return cell
+    }
+    
+    public func getSubtitle() -> String? {
+        return subtitle
     }
 
 }
