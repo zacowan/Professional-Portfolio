@@ -18,6 +18,7 @@
 		700BAD6A2193E16E009177DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 700BAD692193E16E009177DD /* GoogleService-Info.plist */; };
 		700DA1EB21A8B8E000DEF276 /* EntryParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DA1EA21A8B8E000DEF276 /* EntryParagraph.swift */; };
 		7048843921A8DC85008C356E /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7048843821A8DC85008C356E /* ExitButton.swift */; };
+		7060721221B5ACCF002DC948 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060721121B5ACCF002DC948 /* DataLoader.swift */; };
 		70763C81218BAA860082DDD6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70763C80218BAA860082DDD6 /* Card.swift */; };
 		707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */; };
 		707DACF7218D1ADE0085F6C8 /* CardEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */; };
@@ -57,6 +58,7 @@
 		700BAD692193E16E009177DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		700DA1EA21A8B8E000DEF276 /* EntryParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryParagraph.swift; sourceTree = "<group>"; };
 		7048843821A8DC85008C356E /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
+		7060721121B5ACCF002DC948 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		70763C80218BAA860082DDD6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryViewController.swift; sourceTree = "<group>"; };
 		707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				70016177219CCA2E00D7B7C3 /* CardEntryData.swift */,
 				70F961C3219393F600039CEF /* CardData.swift */,
 				70D69D1E21A8D3C900767923 /* Utilities.swift */,
+				7060721121B5ACCF002DC948 /* DataLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7060721221B5ACCF002DC948 /* DataLoader.swift in Sources */,
 				70F961C4219393F600039CEF /* CardData.swift in Sources */,
 				70D49774218B6B420039472F /* TabView.swift in Sources */,
 				7004E147218A504D008A3927 /* RoundButton.swift in Sources */,

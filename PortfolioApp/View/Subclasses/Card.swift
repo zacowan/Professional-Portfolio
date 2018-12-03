@@ -141,7 +141,7 @@ class Card: UICollectionViewCell {
         leading.text = d.getLeading()
         
         let imageUrl = d.getImageUrlString()
-        imageView.imageFromServerURL(imageUrl, placeHolder: nil)
+        imageView.imageFromServerURL(imageUrl, placeHolder: UIImage())
     }
     
 }

@@ -7,14 +7,12 @@
 //
 
 import UIKit
-import Firebase
 
 private let reuseIdentifier = "CardCell"
 
 class CardCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private var subtitle: String?
-    private let database = AppDelegate.getDatabase()
     private var cardData = [CardData]()
     private var currentCell = 0
 
@@ -43,26 +41,12 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     init(withSubtitle subtitle: String) {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.subtitle = subtitle
-        let collectionName = "\(subtitle.lowercased())Cards"
-        let colReference = database.collection(collectionName)
-        colReference.getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting card documents: \(err)")
-            } else {
-                let documents = querySnapshot!.documents
-                for document in documents {
-                    if !(document.documentID.contains("Entry")) {
-                        let data = CardData(withDataFromFirebase: document.data())
-                        let entryData = self.findCardEntryDocument(withCard: document.documentID, withDocs: documents)?.data()
-                        if let unwrappedEntryData = entryData {
-                            data.setEntryData(withDataFromFirebase: unwrappedEntryData)
-                        }
-                        self.cardData.append(data)
-                        self.collectionView.reloadData()
-                    }
-                }
-            }
+        
+        for data in DataLoader.data[subtitle]! {
+            cardData.append(data)
         }
+        
+        collectionView.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -100,15 +84,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         cell.setData(withData: data)
         currentCell += (currentCell < cardData.count - 1) ? 1 : 0
         return cell
-    }
-    
-    private func findCardEntryDocument(withCard card: String, withDocs docs: [QueryDocumentSnapshot]) -> QueryDocumentSnapshot? {
-        for doc in docs {
-            if doc.documentID == "\(card) Entry" {
-                return doc
-            }
-        }
-        return nil
     }
     
     public func getSubtitle() -> String? {

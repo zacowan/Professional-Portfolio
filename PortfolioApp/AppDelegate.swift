@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         vc.present(SplashViewController(), animated: true, completion: nil)
+        DataLoader.fetchData(AppDelegate.database!)
         return true
     }
 
