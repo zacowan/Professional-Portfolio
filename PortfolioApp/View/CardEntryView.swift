@@ -111,7 +111,6 @@ class CardEntryView {
         }
         scrollViewHeight += DISTANCE_BETWEEN_ITEMS
         scrollViewHeight += DISTANCE_FROM_BOTTOM
-        print(scrollViewHeight)
         scrollView.contentSize.height = scrollViewHeight
     }
     
@@ -161,6 +160,8 @@ class CardEntryView {
     private let splashImage: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = Colors.highlight
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     

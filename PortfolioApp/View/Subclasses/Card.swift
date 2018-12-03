@@ -137,7 +137,7 @@ class Card: UICollectionViewCell {
     public func setData(withData d: CardData) {
         data = d
         title.text = d.getTitle()
-        subtitle.text = d.getSubtitle()
+        subtitle.text = d.getSubtitle().uppercased()
         leading.text = d.getLeading()
         
         let imageUrl = d.getImageUrlString()
