@@ -24,7 +24,7 @@ class CardEntryView {
     private var scrollViewHeight: CGFloat = 0
     
     init(withView view: UIView) {
-        // blah
+        // Setup
         scrollViewHeight += IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.intrinsicContentSize.height + titleLabel.intrinsicContentSize.height
         self.view = view
         elements += [scrollView, subtitleLabel, titleLabel, splashImage, exitButton]

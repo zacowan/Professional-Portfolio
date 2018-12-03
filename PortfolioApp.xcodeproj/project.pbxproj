@@ -21,7 +21,6 @@
 		70763C81218BAA860082DDD6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70763C80218BAA860082DDD6 /* Card.swift */; };
 		707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */; };
 		707DACF7218D1ADE0085F6C8 /* CardEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */; };
-		7090C5D62196275C000F95E7 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7090C5D52196275C000F95E7 /* DataLoader.swift */; };
 		709C981F2189FA8400207B0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C981E2189FA8400207B0E /* AppDelegate.swift */; };
 		709C98212189FA8400207B0E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709C98202189FA8400207B0E /* SplashViewController.swift */; };
 		709C98262189FA8400207B0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 709C98252189FA8400207B0E /* Assets.xcassets */; };
@@ -61,7 +60,6 @@
 		70763C80218BAA860082DDD6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryViewController.swift; sourceTree = "<group>"; };
 		707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardEntryView.swift; sourceTree = "<group>"; };
-		7090C5D52196275C000F95E7 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		709C981B2189FA8400207B0E /* PortfolioApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortfolioApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		709C981E2189FA8400207B0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		709C98202189FA8400207B0E /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			children = (
 				70016177219CCA2E00D7B7C3 /* CardEntryData.swift */,
 				70F961C3219393F600039CEF /* CardData.swift */,
-				7090C5D52196275C000F95E7 /* DataLoader.swift */,
 				70D69D1E21A8D3C900767923 /* Utilities.swift */,
 			);
 			path = Model;
@@ -411,7 +408,6 @@
 				70763C81218BAA860082DDD6 /* Card.swift in Sources */,
 				70D69D1F21A8D3C900767923 /* Utilities.swift in Sources */,
 				707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */,
-				7090C5D62196275C000F95E7 /* DataLoader.swift in Sources */,
 				7004E13E218A41EF008A3927 /* TitleLabel.swift in Sources */,
 				7004E143218A4BE4008A3927 /* SubtitleLabel.swift in Sources */,
 				709C98422189FB2600207B0E /* Constants.swift in Sources */,
