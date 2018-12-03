@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         AppDelegate.database = Firestore.firestore()
-        let vc = TabBarController()
+        let vc = UIViewController()
+        vc.view.backgroundColor = Colors.background
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
