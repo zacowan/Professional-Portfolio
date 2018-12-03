@@ -55,7 +55,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private func setupCollectionView(usingView tabView: TabView) {
         collectionView.backgroundColor = Colors.background
-        collectionView.showsVerticalScrollIndicator = false
+        //collectionView.showsVerticalScrollIndicator = false
         collectionView.alwaysBounceVertical = true
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
