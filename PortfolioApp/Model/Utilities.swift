@@ -30,18 +30,4 @@ class Utilities {
         return nil
     }
     
-    public static func loadImageFromUrl(_ urlString: String?, withImageView imageView: UIImageView) {
-        let url = URL(string: urlString!)!
-        var data: Data?
-        
-        DispatchQueue.global(qos: .background).async {
-            let imageData: NSData? = NSData(contentsOf: url)
-            
-            data = imageData! as Data
-            
-            imageView.image = UIImage(data: data!)
-        }
-        
-    }
-    
 }

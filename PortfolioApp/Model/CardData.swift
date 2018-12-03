@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 class CardData {
     
     private var title: String?
     private var subtitle: String?
     private var leading: String?
-    private var image: String?
+    private var imageData: Data?
     private var entryData: CardEntryData?
     
     init(withDataFromFirebase data: [String : Any]) {
@@ -25,7 +26,17 @@ class CardData {
             } else if key == "leading" {
                 leading = (value as! String)
             } else if key == "image" {
-                image = (value as! String)
+                let session = URLSession(configuration: .default)
+                
+                let url = URL(string: value as! String)!
+                
+                let task = session.dataTask(with: url) { (data, response, error) in
+                    if error == nil && data != nil {
+                        self.imageData = data
+                    }
+                }
+                
+                task.resume()
             }
         }
     }
@@ -50,8 +61,12 @@ class CardData {
         return leading!
     }
     
-    public func getImage() -> String {
-        return image!
+    public func getImage() -> UIImage? {
+        if imageData != nil {
+            return UIImage(data: imageData!)
+        } else {
+            return UIImage()
+        }
     }
     
 }

@@ -140,7 +140,7 @@ class Card: UICollectionViewCell {
         subtitle.text = data?.getSubtitle()
         leading.text = data?.getLeading()
         
-        Utilities.loadImageFromUrl(data?.getImage(), withImageView: imageView)
+        imageView.image = data?.getImage()
     }
     
 }
