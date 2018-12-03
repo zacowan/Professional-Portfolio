@@ -14,7 +14,7 @@ class CardData {
     private var title: String?
     private var subtitle: String?
     private var leading: String?
-    private var imageData: Data?
+    private var imageUrlString: String?
     private var entryData: CardEntryData?
     
     init(withDataFromFirebase data: [String : Any]) {
@@ -26,17 +26,7 @@ class CardData {
             } else if key == "leading" {
                 leading = (value as! String)
             } else if key == "image" {
-                let session = URLSession(configuration: .default)
-                
-                let url = URL(string: value as! String)!
-                
-                let task = session.dataTask(with: url) { (data, response, error) in
-                    if error == nil && data != nil {
-                        self.imageData = data
-                    }
-                }
-                
-                task.resume()
+                imageUrlString = (value as! String)
             }
         }
     }
@@ -61,12 +51,8 @@ class CardData {
         return leading!
     }
     
-    public func getImage() -> UIImage? {
-        if imageData != nil {
-            return UIImage(data: imageData!)
-        } else {
-            return UIImage()
-        }
+    public func getImageUrlString() -> String {
+        return imageUrlString!
     }
     
 }

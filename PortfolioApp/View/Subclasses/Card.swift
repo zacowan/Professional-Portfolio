@@ -136,11 +136,12 @@ class Card: UICollectionViewCell {
     
     public func setData(withData d: CardData) {
         data = d
-        title.text = data?.getTitle()
-        subtitle.text = data?.getSubtitle()
-        leading.text = data?.getLeading()
+        title.text = d.getTitle()
+        subtitle.text = d.getSubtitle()
+        leading.text = d.getLeading()
         
-        imageView.image = data?.getImage()
+        let imageUrl = d.getImageUrlString()
+        imageView.imageFromServerURL(imageUrl, placeHolder: nil)
     }
     
 }
