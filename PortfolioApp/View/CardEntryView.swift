@@ -18,13 +18,14 @@ class CardEntryView {
     private let DISTANCE_BETWEEN_ITEMS: CGFloat = 20
     private let DISTANCE_BETWEEN_TITLE_AND_CONTENT: CGFloat = 60
     private let DISTANCE_FROM_BOTTOM: CGFloat = 80
-    private let IMAGE_HEIGHT: CGFloat = 400
+    private var IMAGE_HEIGHT: CGFloat = 400
     private let SUBIMAGE_HEIGHT: CGFloat = 250
     
     private var scrollViewHeight: CGFloat = 0
     
     init(withView view: UIView) {
         // Setup
+        IMAGE_HEIGHT = view.frame.size.height / 1.5
         scrollViewHeight += IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.intrinsicContentSize.height + titleLabel.intrinsicContentSize.height
         self.view = view
         elements += [scrollView, subtitleLabel, titleLabel, splashImage, exitButton]
@@ -111,7 +112,6 @@ class CardEntryView {
         }
         scrollViewHeight += DISTANCE_BETWEEN_ITEMS
         scrollViewHeight += DISTANCE_FROM_BOTTOM
-        print(scrollViewHeight)
         scrollView.contentSize.height = scrollViewHeight
     }
     
@@ -161,6 +161,8 @@ class CardEntryView {
     private let splashImage: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = Colors.highlight
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -168,7 +170,7 @@ class CardEntryView {
         scrollView.addSubview(splashImage)
         splashImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         splashImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        splashImage.heightAnchor.constraint(equalToConstant: IMAGE_HEIGHT).isActive = true
+        splashImage.heightAnchor.constraint(equalToConstant: view.frame.size.height / 1.5).isActive = true
         splashImage.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
     }
     
