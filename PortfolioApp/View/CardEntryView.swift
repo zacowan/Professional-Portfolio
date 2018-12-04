@@ -22,6 +22,8 @@ class CardEntryView {
     private let SUBIMAGE_HEIGHT: CGFloat = 250
     
     private var scrollViewHeight: CGFloat = 0
+    private var hrefButton: UIButton?
+    private var href: String?
     
     init(withView view: UIView) {
         // Setup
@@ -35,6 +37,14 @@ class CardEntryView {
     }
     
     // Public functions
+    
+    public func getHrefButton() -> UIButton? {
+        return hrefButton
+    }
+    
+    public func getHref() -> String? {
+        return href
+    }
     
     public func getElements() -> [UIView] {
         return [scrollView, exitButton]
@@ -79,11 +89,13 @@ class CardEntryView {
                 scrollViewHeight += SUBIMAGE_HEIGHT
                 item = img
             } else if key.contains("href") {
-                let href = RoundButton()
+                let href = RoundButton(type: .system)
                 href.setTitle("View", for: .normal)
                 href.titleLabel?.font = Fonts.button
                 scrollViewHeight += 60
                 item = href
+                hrefButton = href
+                self.href = value
             }
             
             scrollView.addSubview(item)

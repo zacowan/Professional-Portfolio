@@ -11,6 +11,7 @@ import UIKit
 class CardEntryViewController: UIViewController {
     
     private var data: CardData?
+    private var href: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,18 @@ class CardEntryViewController: UIViewController {
         cardEntryView.addConstraints()
         cardEntryView.setData(wtihData: data!)
         cardEntryView.getExitButton().addTarget(self, action: #selector(exitViewController), for: .touchUpInside)
+        
+        let hrefButton = cardEntryView.getHrefButton()
+        if let button = hrefButton {
+            href = cardEntryView.getHref()
+            button.addTarget(self, action: #selector(openUrl), for: .touchUpInside)
+        }
+    }
+    
+    @objc private func openUrl() {
+        if let url = URL(string: href!) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     @objc private func exitViewController() {
