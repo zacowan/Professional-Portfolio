@@ -15,7 +15,7 @@ class DataLoader {
     
     public static var data: [String : [CardData]] = [:]
     
-    public static func fetchData(_ database: Firestore, _ loadingViewController: UIViewController) {
+    public static func fetchData(_ database: Firestore, _ loadingViewController: LoadingViewController) {
         for subtitle in TabBarController.subtitles {
             let collectionName = "\(subtitle.lowercased())Cards"
             let collection = database.collection(collectionName)
@@ -24,6 +24,7 @@ class DataLoader {
             collection.getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting card documents: \(err)")
+                    loadingViewController.displayErrorMessages(err as! String)
                 } else {
                     print("Document retrieval successful for \(collectionName)!")
                     let documents = querySnapshot!.documents

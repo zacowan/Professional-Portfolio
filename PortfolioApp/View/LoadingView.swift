@@ -37,6 +37,10 @@ class LoadingView {
         leadingTextConstraints()
     }
     
+    public func getLeading() -> UILabel {
+        return leadingText
+    }
+    
     // Private functions (UI setup and constraint setup)
     
     private let leadingText: UILabel = {

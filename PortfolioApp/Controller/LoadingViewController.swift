@@ -9,6 +9,8 @@
 import UIKit
 
 class LoadingViewController: UIViewController {
+    
+    private var leading: UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +24,14 @@ class LoadingViewController: UIViewController {
             view.addSubview(element)
         }
         loadView.addConstraints()
+        leading = loadView.getLeading()
         
         // Do stuff
         
+    }
+    
+    public func displayErrorMessages(_ message: String) {
+        leading!.text = "Error loading data: \(message)."
     }
 
 }
