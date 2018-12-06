@@ -41,7 +41,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.subtitle = subtitle
         
-        for data in DataLoader.data[subtitle]! {
+        for data in DataLoader.shared.getData()[subtitle]! {
             cardData.append(data)
         }
         

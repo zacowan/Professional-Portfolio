@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         AppDelegate.database = Firestore.firestore()
-        DataLoader.fetchData(AppDelegate.database!, vc)
+        DataLoader.shared.fetchData(AppDelegate.database!, vc)
         return true
     }
 

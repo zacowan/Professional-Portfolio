@@ -19,7 +19,7 @@ class CardEntryView {
     private let DISTANCE_BETWEEN_TITLE_AND_CONTENT: CGFloat = 60
     private let DISTANCE_FROM_BOTTOM: CGFloat = 80
     private var IMAGE_HEIGHT: CGFloat = 400
-    private let SUBIMAGE_HEIGHT: CGFloat = 250
+    private var SUBIMAGE_HEIGHT: CGFloat = 250
     
     private var scrollViewHeight: CGFloat = 0
     private var hrefButton: UIButton?
@@ -28,6 +28,7 @@ class CardEntryView {
     init(withView view: UIView) {
         // Setup
         IMAGE_HEIGHT = view.frame.size.height / 1.5
+        SUBIMAGE_HEIGHT = view.frame.size.height / 2.5
         scrollViewHeight += IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.intrinsicContentSize.height + titleLabel.intrinsicContentSize.height
         self.view = view
         elements += [scrollView, subtitleLabel, titleLabel, splashImage, exitButton]
