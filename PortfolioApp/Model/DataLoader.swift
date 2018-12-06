@@ -15,13 +15,11 @@ class DataLoader {
     
     public static let shared = DataLoader()
     
-    private var data: [String : [CardData]] = [:]
+    public let database: Firestore = Firestore.firestore()
     
-    public func getData() -> [String : [CardData]] {
-        return data
-    }
+    public var data: [String : [CardData]] = [:]
     
-    public func fetchData(_ database: Firestore, _ loadingViewController: LoadingViewController) {
+    public func fetchData(_ loadingViewController: LoadingViewController) {
         for subtitle in TabBarController.subtitles {
             let collectionName = "\(subtitle.lowercased())Cards"
             let collection = database.collection(collectionName)

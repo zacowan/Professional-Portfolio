@@ -11,7 +11,12 @@ import UIKit
 
 class Utilities {
     
-    public static func getOrderedDictionary(fromDic dic: [String : String]) -> [Int : [String]] {
+    public static let shared = Utilities()
+    
+    // Used in conjunction with the UIImageView URL extension
+    let imageCache = NSCache<NSString, UIImage>()
+    
+    public func getOrderedDictionary(fromDic dic: [String : String]) -> [Int : [String]] {
         var orderedDictionary: [Int : [String]] = [:]
         for index in 0 ..< dic.count {
             let key = findItemInDictionary(withDic: dic, withIndex: index)!
@@ -21,7 +26,7 @@ class Utilities {
         return orderedDictionary
     }
     
-    private static func findItemInDictionary(withDic dic: [String : String], withIndex i: Int) -> String? {
+    private func findItemInDictionary(withDic dic: [String : String], withIndex i: Int) -> String? {
         for (key, _) in dic {
             if key.contains("\(i)") {
                 return key
@@ -34,14 +39,12 @@ class Utilities {
 
 // Source for below code: https://stackoverflow.com/questions/37018916/swift-async-load-image
 
-let imageCache = NSCache<NSString, UIImage>()
-
 extension UIImageView {
     
     func imageFromServerURL(_ URLString: String, placeHolder: UIImage?) {
         
         self.image = nil
-        if let cachedImage = imageCache.object(forKey: NSString(string: URLString)) {
+        if let cachedImage = Utilities.shared.imageCache.object(forKey: NSString(string: URLString)) {
             self.image = cachedImage
             return
         }
@@ -61,7 +64,7 @@ extension UIImageView {
                 DispatchQueue.main.async {
                     if let data = data {
                         if let downloadedImage = UIImage(data: data) {
-                            imageCache.setObject(downloadedImage, forKey: NSString(string: URLString))
+                            Utilities.shared.imageCache.setObject(downloadedImage, forKey: NSString(string: URLString))
                             self.image = downloadedImage
                         }
                     }

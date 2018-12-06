@@ -66,7 +66,7 @@ class CardEntryView {
         splashImage.imageFromServerURL(data.getImageUrlString(), placeHolder: UIImage())
         
         let entryData = data.getEntryData()
-        let orderedEntryData = Utilities.getOrderedDictionary(fromDic: entryData)
+        let orderedEntryData = Utilities.shared.getOrderedDictionary(fromDic: entryData)
         var previousItem: UIView?
         
         for i in 0 ..< orderedEntryData.count {
