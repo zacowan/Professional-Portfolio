@@ -12,6 +12,7 @@ import UIKit
 // NOTES: When adding new elements, append them to the array and add their constraints to the addConstrains() function
 
 class LoadingView {
+    
     private let view: UIView
     private var elements = [UIView]()
     
@@ -21,7 +22,7 @@ class LoadingView {
     
     init(withView view: UIView) {
         self.view = view
-        elements += [leadingText]
+        elements += [leadingText, retryButton]
         for element in elements {
             element.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -29,16 +30,25 @@ class LoadingView {
     
     // Public functions
     
-    public func getElements() -> [UIView] {
+    func getElements() -> [UIView] {
         return elements
     }
     
-    public func addConstraints() {
+    func addConstraints() {
         leadingTextConstraints()
+        retryButtonConstraints()
     }
     
-    public func getLeading() -> UILabel {
-        return leadingText
+    func setLeading(_ text: String) {
+        leadingText.text = text
+    }
+    
+    func showHideRetryButton() {
+        retryButton.isHidden = retryButton.isHidden ? false : true
+    }
+    
+    func getRetryButton() -> UIButton {
+        return retryButton
     }
     
     // Private functions (UI setup and constraint setup)
@@ -55,6 +65,20 @@ class LoadingView {
         leadingText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
         leadingText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
         leadingText.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    private let retryButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Try Again", for: .normal)
+        button.titleLabel?.font = Fonts.cardLeading
+        button.setTitleColor(Colors.highlight, for: .normal)
+        button.isHidden = true
+        return button
+    }()
+    
+    private func retryButtonConstraints() {
+        retryButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100).isActive = true
+        retryButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
 }

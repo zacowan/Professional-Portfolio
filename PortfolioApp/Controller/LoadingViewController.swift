@@ -10,7 +10,7 @@ import UIKit
 
 class LoadingViewController: UIViewController {
     
-    private var leading: UILabel?
+    private var loadingView: LoadingView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,20 +18,29 @@ class LoadingViewController: UIViewController {
         view.backgroundColor = Colors.background
         
         // Add the UI
-        let loadView = LoadingView(withView: view)
-        let viewElements = loadView.getElements()
+        self.loadingView = LoadingView(withView: view)
+        let viewModel = self.loadingView!
+        
+        let viewElements = viewModel.getElements()
         for element in viewElements {
             view.addSubview(element)
         }
-        loadView.addConstraints()
-        leading = loadView.getLeading()
+        viewModel.addConstraints()
         
+        viewModel.getRetryButton().addTarget(self, action: #selector(retryFetchData), for: .touchUpInside)
         // Do stuff
         
     }
     
-    public func displayErrorMessages(_ message: String) {
-        leading!.text = "Error loading data: \(message)."
+    @objc private func retryFetchData() {
+        DataLoader.shared.fetchData(self)
+        loadingView!.showHideRetryButton()
+        loadingView!.setLeading("Performing complex mathematical operations...")
+    }
+    
+    func displayErrorMessages(_ message: String) {
+        loadingView!.setLeading(message)
+        loadingView!.showHideRetryButton()
     }
 
 }

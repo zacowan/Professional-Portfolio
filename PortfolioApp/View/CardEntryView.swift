@@ -39,20 +39,24 @@ class CardEntryView {
     
     // Public functions
     
-    public func getHrefButton() -> UIButton? {
+    func getExitButton() -> UIButton {
+        return exitButton
+    }
+    
+    func getHrefButton() -> UIButton? {
         return hrefButton
     }
     
-    public func getHref() -> String? {
+    func getHref() -> String? {
         return href
     }
     
-    public func getElements() -> [UIView] {
+    func getElements() -> [UIView] {
         return [scrollView, exitButton]
     }
     
     // NOTE: Order matters when adding constraints
-    public func addConstraints() {
+    func addConstraints() {
         scrollViewConstraints()
         splashImageConstraints()
         subtitleLabelConstraints()
@@ -60,7 +64,7 @@ class CardEntryView {
         exitButtonConstraints()
     }
     
-    public func setData(wtihData data: CardData) {
+    func setData(wtihData data: CardData) {
         titleLabel.text = data.getTitle()
         subtitleLabel.text = data.getSubtitle().uppercased()
         splashImage.imageFromServerURL(data.getImageUrlString(), placeHolder: UIImage())
@@ -196,10 +200,6 @@ class CardEntryView {
     private func exitButtonConstraints() {
         exitButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
         exitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-    }
-    
-    public func getExitButton() -> UIButton {
-        return exitButton
     }
     
 }

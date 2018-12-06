@@ -31,27 +31,27 @@ class CardData {
         }
     }
     
-    public func setEntryData(withDataFromFirebase data: [String : Any]) {
+    func setEntryData(withDataFromFirebase data: [String : Any]) {
         entryData = CardEntryData(withDataFromFirebase: data)
     }
     
-    public func getEntryData() -> [String : String] {
+    func getEntryData() -> [String : String] {
         return entryData!.getData()
     }
     
-    public func getTitle() -> String {
+    func getTitle() -> String {
         return title!
     }
     
-    public func getSubtitle() -> String {
+    func getSubtitle() -> String {
         return subtitle!
     }
     
-    public func getLeading() -> String {
+    func getLeading() -> String {
         return leading!
     }
     
-    public func getImageUrlString() -> String {
+    func getImageUrlString() -> String {
         return imageUrlString!
     }
     

@@ -13,13 +13,13 @@ import Firebase
 //TODO: Add a part that retrieves data ONCE at the beginning and stores it.
 class DataLoader {
     
-    public static let shared = DataLoader()
+    static let shared = DataLoader()
     
-    public let database: Firestore = Firestore.firestore()
+    let database: Firestore = Firestore.firestore()
     
-    public var data: [String : [CardData]] = [:]
+    var data: [String : [CardData]] = [:]
     
-    public func fetchData(_ loadingViewController: LoadingViewController) {
+    func fetchData(_ loadingViewController: LoadingViewController) {
         for subtitle in TabBarController.subtitles {
             let collectionName = "\(subtitle.lowercased())Cards"
             let collection = database.collection(collectionName)
@@ -44,7 +44,7 @@ class DataLoader {
                     }
                     self.data[subtitle] = dataCollection
                     if self.data.count >= 3 {
-                        loadingViewController.present(SplashViewController(), animated: true, completion: nil)
+                        //loadingViewController.present(SplashViewController(), animated: true, completion: nil)
                     }
                 }
             }

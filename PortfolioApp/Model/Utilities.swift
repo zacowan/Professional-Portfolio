@@ -11,12 +11,12 @@ import UIKit
 
 class Utilities {
     
-    public static let shared = Utilities()
+    static let shared = Utilities()
     
     // Used in conjunction with the UIImageView URL extension
     let imageCache = NSCache<NSString, UIImage>()
     
-    public func getOrderedDictionary(fromDic dic: [String : String]) -> [Int : [String]] {
+    func getOrderedDictionary(fromDic dic: [String : String]) -> [Int : [String]] {
         var orderedDictionary: [Int : [String]] = [:]
         for index in 0 ..< dic.count {
             let key = findItemInDictionary(withDic: dic, withIndex: index)!
