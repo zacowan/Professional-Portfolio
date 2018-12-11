@@ -176,7 +176,7 @@ class CardEntryView {
     
     private let splashImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = Colors.highlight
+        //imageView.backgroundColor = Colors.highlight
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView

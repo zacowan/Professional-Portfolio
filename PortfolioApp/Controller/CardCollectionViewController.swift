@@ -79,7 +79,6 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         // Configure the cell
         // Iterate over data and set the contents
         let data = cardData[indexPath.row]
-        cell.setParentViewController(withViewController: self)
         cell.setData(withData: data)
         return cell
     }

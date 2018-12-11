@@ -46,5 +46,9 @@ class LoadingViewController: UIViewController {
         loadingView!.showHideRetryButton()
         loadingView!.startStopLoadingIndicator()
     }
+    
+    func completedFetchingData() {
+        present(SplashViewController(), animated: true, completion: nil)
+    }
 
 }

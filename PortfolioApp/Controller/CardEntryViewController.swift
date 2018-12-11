@@ -43,9 +43,7 @@ class CardEntryViewController: UIViewController {
     }
     
     @objc private func exitViewController() {
-        let newVC = TabBarController()
-        newVC.selectedViewController! = newVC.viewControllers![TabBarController.currentTabIndex]
-        present(newVC, animated: false, completion: nil)
+        NavigationViewController.shared.popViewController(animated: true)
     }
     
     init(withData data: CardData) {
