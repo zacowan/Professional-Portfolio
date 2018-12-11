@@ -14,6 +14,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private var subtitle: String?
     private var cardData = [CardData]()
+    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +35,32 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         }
         tabView.addConstraints()
         setupCollectionView(usingView: tabView)
+        
+        // Add functionality to the refresh controller
+        self.refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        
+        self.collectionView.reloadData()
+    }
+    
+    @objc private func refreshData() {
+        DataLoader.shared.refreshData(withVC: self)
+    }
+    
+    func updateViewAfterRefresh(success: Bool) {
+        self.refreshControl.endRefreshing()
         self.collectionView.reloadData()
     }
     
     init(withSubtitle subtitle: String) {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.subtitle = subtitle
+        self.collectionView.refreshControl = refreshControl
         
         for data in DataLoader.shared.data[subtitle]! {
             cardData.append(data)
         }
         
-        collectionView.reloadData()
+        //collectionView.reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {
