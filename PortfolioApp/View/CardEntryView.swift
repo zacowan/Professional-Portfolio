@@ -86,7 +86,6 @@ class CardEntryView {
                 item = p
             } else if key.contains("img") {
                 let img = UIImageView()
-                img.backgroundColor = Colors.highlight
                 img.layer.cornerRadius = 25
                 img.imageFromServerURL(value, placeHolder: UIImage())
                 img.contentMode = .scaleAspectFill

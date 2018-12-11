@@ -22,7 +22,7 @@ class LoadingView {
     
     init(withView view: UIView) {
         self.view = view
-        elements += [leadingText, retryButton]
+        elements += [leadingText, retryButton, loadingIndicator]
         for element in elements {
             element.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -36,6 +36,7 @@ class LoadingView {
     
     func addConstraints() {
         leadingTextConstraints()
+        loadingIndicatorConstraints()
         retryButtonConstraints()
     }
     
@@ -49,6 +50,10 @@ class LoadingView {
     
     func getRetryButton() -> UIButton {
         return retryButton
+    }
+    
+    func startStopLoadingIndicator() {
+        loadingIndicator.isAnimating ? loadingIndicator.stopAnimating() : loadingIndicator.startAnimating()
     }
     
     // Private functions (UI setup and constraint setup)
@@ -65,6 +70,17 @@ class LoadingView {
         leadingText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
         leadingText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
         leadingText.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
+    private func loadingIndicatorConstraints() {
+        loadingIndicator.topAnchor.constraint(equalTo: leadingText.bottomAnchor, constant: DISTANCE_BETWEEN).isActive = true
+        loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     private let retryButton: UIButton = {

@@ -27,20 +27,24 @@ class LoadingViewController: UIViewController {
         }
         viewModel.addConstraints()
         
+        viewModel.startStopLoadingIndicator()
+        
         viewModel.getRetryButton().addTarget(self, action: #selector(retryFetchData), for: .touchUpInside)
         // Do stuff
         
     }
     
     @objc private func retryFetchData() {
-        DataLoader.shared.fetchData(self)
+        DataLoader.shared.fetchData(withVC: self)
         loadingView!.showHideRetryButton()
         loadingView!.setLeading("Performing complex mathematical operations...")
+        loadingView!.startStopLoadingIndicator()
     }
     
-    func displayErrorMessages(_ message: String) {
+    func errorFetchingData(_ message: String) {
         loadingView!.setLeading(message)
         loadingView!.showHideRetryButton()
+        loadingView!.startStopLoadingIndicator()
     }
 
 }

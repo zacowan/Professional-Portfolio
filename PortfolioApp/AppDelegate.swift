@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         
-        DataLoader.shared.fetchData(vc)
+        DataLoader.shared.fetchData(withVC: vc)
         return true
     }
 

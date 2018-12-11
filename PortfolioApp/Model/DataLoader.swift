@@ -19,7 +19,7 @@ class DataLoader {
     
     var data: [String : [CardData]] = [:]
     
-    func fetchData(_ loadingViewController: LoadingViewController) {
+    func fetchData(withVC loadingViewController: LoadingViewController) {
         for subtitle in TabBarController.subtitles {
             let collectionName = "\(subtitle.lowercased())Cards"
             let collection = database.collection(collectionName)
@@ -28,12 +28,13 @@ class DataLoader {
             collection.getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting card documents: \(err)")
-                    loadingViewController.displayErrorMessages(err as! String)
+                    loadingViewController.errorFetchingData(err as! String)
                 } else {
                     print("Document retrieval successful for \(collectionName)!")
                     let documents = querySnapshot!.documents
                     for document in documents {
                         if !(document.documentID.contains("Entry")) {
+                            print("Appending \(document.documentID) to \(collectionName).")
                             let data = CardData(withDataFromFirebase: document.data())
                             let entryData = self.findCardEntryDocument(withCard: document.documentID, withDocs: documents)?.data()
                             if let unwrappedEntryData = entryData {
@@ -44,7 +45,8 @@ class DataLoader {
                     }
                     self.data[subtitle] = dataCollection
                     if self.data.count >= 3 {
-                        //loadingViewController.present(SplashViewController(), animated: true, completion: nil)
+                        // Completion handler
+                        loadingViewController.present(SplashViewController(), animated: true, completion: nil)
                     }
                 }
             }

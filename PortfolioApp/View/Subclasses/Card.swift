@@ -64,9 +64,7 @@ class Card: UICollectionViewCell {
         container.addSubview(imageView)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //imageView.backgroundColor = Colors.highlight
-        
+                
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
