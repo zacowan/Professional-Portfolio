@@ -5,7 +5,7 @@
 //  Created by Zachary Cowan on 12/11/18.
 //  Copyright © 2018 Zachary Cowan. All rights reserved.
 //
-// Retrieved the following code from: https://stackoverflow.com/questions/30743408/check-for-internet-connection-with-swift
+// The code below was retrieved from: https://stackoverflow.com/questions/30743408/check-for-internet-connection-with-swift
 
 import Foundation
 import SystemConfiguration

@@ -11,6 +11,7 @@ import UIKit
 class CardEntryViewController: UIViewController {
     
     private var data: CardData?
+    private var splashImage: UIImage?
     private var href: String?
 
     override func viewDidLoad() {
@@ -26,7 +27,7 @@ class CardEntryViewController: UIViewController {
             view.addSubview(element)
         }
         cardEntryView.addConstraints()
-        cardEntryView.setData(wtihData: data!)
+        cardEntryView.setData(wtihData: data!, withSplashImage: splashImage!)
         cardEntryView.getExitButton().addTarget(self, action: #selector(exitViewController), for: .touchUpInside)
         
         let hrefButton = cardEntryView.getHrefButton()
@@ -46,9 +47,10 @@ class CardEntryViewController: UIViewController {
         NavigationViewController.shared.popViewController(animated: true)
     }
     
-    init(withData data: CardData) {
+    init(withData data: CardData, withSplashImage splashImage: UIImage) {
         super.init(nibName: nil, bundle: nil)
         self.data = data
+        self.splashImage = splashImage
     }
     
     required init?(coder aDecoder: NSCoder) {

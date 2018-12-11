@@ -64,10 +64,10 @@ class CardEntryView {
         exitButtonConstraints()
     }
     
-    func setData(wtihData data: CardData) {
+    func setData(wtihData data: CardData, withSplashImage spImage: UIImage) {
         titleLabel.text = data.getTitle()
         subtitleLabel.text = data.getSubtitle().uppercased()
-        splashImage.imageFromServerURL(data.getImageUrlString(), placeHolder: UIImage())
+        splashImage.image = spImage
         
         let entryData = data.getEntryData()
         let orderedEntryData = Utilities.shared.getOrderedDictionary(fromDic: entryData)
