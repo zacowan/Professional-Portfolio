@@ -17,7 +17,7 @@ class CardEntryView {
     private let DISTANCE_FROM_SIDES: CGFloat = 20
     private let DISTANCE_BETWEEN_ITEMS: CGFloat = 20
     private let DISTANCE_BETWEEN_TITLE_AND_CONTENT: CGFloat = 60
-    private let DISTANCE_FROM_BOTTOM: CGFloat = 80
+    private let DISTANCE_FROM_BOTTOM: CGFloat = 20
     private var IMAGE_HEIGHT: CGFloat = 400
     private var SUBIMAGE_HEIGHT: CGFloat = 250
     
@@ -96,7 +96,7 @@ class CardEntryView {
                 let href = RoundButton(type: .system)
                 href.setTitle("View", for: .normal)
                 href.titleLabel?.font = Fonts.button
-                scrollViewHeight += 60
+                scrollViewHeight += href.frame.size.height
                 item = href
                 hrefButton = href
                 self.href = value
@@ -126,7 +126,7 @@ class CardEntryView {
             }
             previousItem = item
         }
-        scrollViewHeight += DISTANCE_BETWEEN_ITEMS
+        scrollViewHeight += DISTANCE_BETWEEN_ITEMS * 2
         scrollViewHeight += DISTANCE_FROM_BOTTOM
         scrollView.contentSize.height = scrollViewHeight
     }

@@ -35,13 +35,13 @@ class LoadingViewController: UIViewController {
     }
     
     @objc private func retryFetchData() {
-        DataLoader.shared.fetchData(withVC: self)
         loadingView!.showHideRetryButton()
         loadingView!.setLeading("Performing complex mathematical operations...")
         loadingView!.startStopLoadingIndicator()
+        DataLoader.shared.fetchData(withVC: self)
     }
     
-    func errorFetchingData(_ message: String) {
+    func errorFetchingData(withMsg message: String) {
         loadingView!.setLeading(message)
         loadingView!.showHideRetryButton()
         loadingView!.startStopLoadingIndicator()

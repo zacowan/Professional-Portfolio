@@ -20,36 +20,44 @@ class DataLoader {
     var data: [String : [CardData]] = [:]
     
     func fetchData(withVC loadingViewController: LoadingViewController) {
-        for subtitle in TabBarController.subtitles {
-            let collectionName = "\(subtitle.lowercased())Cards"
-            let collection = database.collection(collectionName)
-            var dataCollection = [CardData]()
-            
-            collection.getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting card documents: \(err)")
-                    loadingViewController.errorFetchingData(err as! String)
-                } else {
-                    print("Document retrieval successful for \(collectionName)!")
-                    let documents = querySnapshot!.documents
-                    for document in documents {
-                        if !(document.documentID.contains("Entry")) {
-                            print("Appending \(document.documentID) to \(collectionName).")
-                            let data = CardData(withDataFromFirebase: document.data())
-                            let entryData = self.findCardEntryDocument(withCard: document.documentID, withDocs: documents)?.data()
-                            if let unwrappedEntryData = entryData {
-                                data.setEntryData(withDataFromFirebase: unwrappedEntryData)
+        // Set data to empty, just in case
+        data = [:]
+        if Reachability.isConnectedToNetwork() {
+            print("Connected to the internet! Performing data fetching...")
+            for subtitle in TabBarController.subtitles {
+                let collectionName = "\(subtitle.lowercased())Cards"
+                let collection = database.collection(collectionName)
+                var dataCollection = [CardData]()
+                
+                collection.getDocuments() { (querySnapshot, err) in
+                    if let err = err {
+                        print("Error getting card documents: \(err)")
+                        loadingViewController.errorFetchingData(withMsg: "Error fetching data: \(err as! String)")
+                    } else {
+                        print("Document retrieval successful for \(collectionName)!")
+                        let documents = querySnapshot!.documents
+                        for document in documents {
+                            if !(document.documentID.contains("Entry")) {
+                                print("Appending \(document.documentID) to \(collectionName).")
+                                let data = CardData(withDataFromFirebase: document.data())
+                                let entryData = self.findCardEntryDocument(withCard: document.documentID, withDocs: documents)?.data()
+                                if let unwrappedEntryData = entryData {
+                                    data.setEntryData(withDataFromFirebase: unwrappedEntryData)
+                                }
+                                dataCollection.append(data)
                             }
-                            dataCollection.append(data)
                         }
-                    }
-                    self.data[subtitle] = dataCollection
-                    if self.data.count >= 3 {
-                        // Completion handler
-                        loadingViewController.present(SplashViewController(), animated: true, completion: nil)
+                        self.data[subtitle] = dataCollection
+                        if self.data.count >= 3 {
+                            // Completion handler
+                            loadingViewController.present(SplashViewController(), animated: true, completion: nil)
+                        }
                     }
                 }
             }
+        } else {
+            print("Not connected to the internet! Displaying error messages...")
+            loadingViewController.errorFetchingData(withMsg: "Error fetching data: No internet connection.")
         }
     }
     
