@@ -29,7 +29,7 @@ class SplashViewController: UIViewController {
     }
     
     @objc private func closeView() {
-        let vc = TabBarController()
+        let vc = NavigationViewController.shared
         present(vc, animated: false, completion: nil)
     }
 

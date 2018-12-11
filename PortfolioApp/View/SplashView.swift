@@ -29,18 +29,18 @@ class SplashView {
     
     // Public functions
     
-    public func getElements() -> [UIView] {
+    func getElements() -> [UIView] {
         return elements
     }
     
-    public func addConstraints() {
+    func addConstraints() {
         welcomeTextConstraints()
         subtitleTextConstraints()
         leadingTextConstraints()
         exploreButtonConstraints()
     }
     
-    public func getButton() -> UIButton {
+    func getButton() -> UIButton {
         return exploreButton
     }
     

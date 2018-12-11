@@ -16,7 +16,7 @@ class CardEntryData {
         self.data = (data as! [String : String])
     }
     
-    public func getData() -> [String : String] {
+    func getData() -> [String : String] {
         return self.data
     }
     

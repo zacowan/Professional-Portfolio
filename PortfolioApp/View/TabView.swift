@@ -31,17 +31,17 @@ class TabView {
     
     // Public functions
     
-    public func getElements() -> [UIView] {
+    func getElements() -> [UIView] {
         return elements
     }
     
-    public func addConstraints() {
+    func addConstraints() {
         topContainerConstraits()
         subtitleTextConstraints()
         titleTextConstraints()
     }
     
-    public func getTopContainer() -> UIView {
+    func getTopContainer() -> UIView {
         return topContainer
     }
     

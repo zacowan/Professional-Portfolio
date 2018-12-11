@@ -17,14 +17,18 @@ class CardEntryView {
     private let DISTANCE_FROM_SIDES: CGFloat = 20
     private let DISTANCE_BETWEEN_ITEMS: CGFloat = 20
     private let DISTANCE_BETWEEN_TITLE_AND_CONTENT: CGFloat = 60
-    private let DISTANCE_FROM_BOTTOM: CGFloat = 80
-    private let IMAGE_HEIGHT: CGFloat = 400
-    private let SUBIMAGE_HEIGHT: CGFloat = 250
+    private let DISTANCE_FROM_BOTTOM: CGFloat = 20
+    private var IMAGE_HEIGHT: CGFloat = 400
+    private var SUBIMAGE_HEIGHT: CGFloat = 250
     
     private var scrollViewHeight: CGFloat = 0
+    private var hrefButton: UIButton?
+    private var href: String?
     
     init(withView view: UIView) {
         // Setup
+        IMAGE_HEIGHT = view.frame.size.height / 1.5
+        SUBIMAGE_HEIGHT = view.frame.size.height / 2.5
         scrollViewHeight += IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.intrinsicContentSize.height + titleLabel.intrinsicContentSize.height
         self.view = view
         elements += [scrollView, subtitleLabel, titleLabel, splashImage, exitButton]
@@ -35,12 +39,24 @@ class CardEntryView {
     
     // Public functions
     
-    public func getElements() -> [UIView] {
+    func getExitButton() -> UIButton {
+        return exitButton
+    }
+    
+    func getHrefButton() -> UIButton? {
+        return hrefButton
+    }
+    
+    func getHref() -> String? {
+        return href
+    }
+    
+    func getElements() -> [UIView] {
         return [scrollView, exitButton]
     }
     
     // NOTE: Order matters when adding constraints
-    public func addConstraints() {
+    func addConstraints() {
         scrollViewConstraints()
         splashImageConstraints()
         subtitleLabelConstraints()
@@ -48,13 +64,13 @@ class CardEntryView {
         exitButtonConstraints()
     }
     
-    public func setData(wtihData data: CardData) {
+    func setData(wtihData data: CardData) {
         titleLabel.text = data.getTitle()
         subtitleLabel.text = data.getSubtitle().uppercased()
         splashImage.imageFromServerURL(data.getImageUrlString(), placeHolder: UIImage())
         
         let entryData = data.getEntryData()
-        let orderedEntryData = Utilities.getOrderedDictionary(fromDic: entryData)
+        let orderedEntryData = Utilities.shared.getOrderedDictionary(fromDic: entryData)
         var previousItem: UIView?
         
         for i in 0 ..< orderedEntryData.count {
@@ -70,7 +86,6 @@ class CardEntryView {
                 item = p
             } else if key.contains("img") {
                 let img = UIImageView()
-                img.backgroundColor = Colors.highlight
                 img.layer.cornerRadius = 25
                 img.imageFromServerURL(value, placeHolder: UIImage())
                 img.contentMode = .scaleAspectFill
@@ -78,11 +93,13 @@ class CardEntryView {
                 scrollViewHeight += SUBIMAGE_HEIGHT
                 item = img
             } else if key.contains("href") {
-                let href = RoundButton()
+                let href = RoundButton(type: .system)
                 href.setTitle("View", for: .normal)
                 href.titleLabel?.font = Fonts.button
-                scrollViewHeight += 60
+                scrollViewHeight += href.frame.size.height
                 item = href
+                hrefButton = href
+                self.href = value
             }
             
             scrollView.addSubview(item)
@@ -109,9 +126,8 @@ class CardEntryView {
             }
             previousItem = item
         }
-        scrollViewHeight += DISTANCE_BETWEEN_ITEMS
+        scrollViewHeight += DISTANCE_BETWEEN_ITEMS * 2
         scrollViewHeight += DISTANCE_FROM_BOTTOM
-        print(scrollViewHeight)
         scrollView.contentSize.height = scrollViewHeight
     }
     
@@ -160,7 +176,9 @@ class CardEntryView {
     
     private let splashImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = Colors.highlight
+        //imageView.backgroundColor = Colors.highlight
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -168,7 +186,7 @@ class CardEntryView {
         scrollView.addSubview(splashImage)
         splashImage.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         splashImage.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        splashImage.heightAnchor.constraint(equalToConstant: IMAGE_HEIGHT).isActive = true
+        splashImage.heightAnchor.constraint(equalToConstant: view.frame.size.height / 1.5).isActive = true
         splashImage.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
     }
     
@@ -181,10 +199,6 @@ class CardEntryView {
     private func exitButtonConstraints() {
         exitButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
         exitButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-    }
-    
-    public func getExitButton() -> UIButton {
-        return exitButton
     }
     
 }

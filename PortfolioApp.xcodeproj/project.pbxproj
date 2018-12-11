@@ -17,6 +17,8 @@
 		7004E147218A504D008A3927 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7004E146218A504D008A3927 /* RoundButton.swift */; };
 		700BAD6A2193E16E009177DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 700BAD692193E16E009177DD /* GoogleService-Info.plist */; };
 		700DA1EB21A8B8E000DEF276 /* EntryParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DA1EA21A8B8E000DEF276 /* EntryParagraph.swift */; };
+		700DA28F21C04ED500F2B495 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DA28E21C04ED500F2B495 /* Reachability.swift */; };
+		700DA29121C0521500F2B495 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 700DA29021C0521500F2B495 /* NavigationViewController.swift */; };
 		7048843921A8DC85008C356E /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7048843821A8DC85008C356E /* ExitButton.swift */; };
 		7060721221B5ACCF002DC948 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7060721121B5ACCF002DC948 /* DataLoader.swift */; };
 		70763C81218BAA860082DDD6 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70763C80218BAA860082DDD6 /* Card.swift */; };
@@ -59,6 +61,8 @@
 		7004E146218A504D008A3927 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		700BAD692193E16E009177DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		700DA1EA21A8B8E000DEF276 /* EntryParagraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryParagraph.swift; sourceTree = "<group>"; };
+		700DA28E21C04ED500F2B495 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		700DA29021C0521500F2B495 /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		7048843821A8DC85008C356E /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
 		7060721121B5ACCF002DC948 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 		70763C80218BAA860082DDD6 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				70D4976F218B69B50039472F /* TabBarController.swift */,
 				70D67C02218CEE620028652C /* CardCollectionViewController.swift */,
 				707DACF4218D19A20085F6C8 /* CardEntryViewController.swift */,
+				700DA29021C0521500F2B495 /* NavigationViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				70F961C3219393F600039CEF /* CardData.swift */,
 				70D69D1E21A8D3C900767923 /* Utilities.swift */,
 				7060721121B5ACCF002DC948 /* DataLoader.swift */,
+				700DA28E21C04ED500F2B495 /* Reachability.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				700DA29121C0521500F2B495 /* NavigationViewController.swift in Sources */,
 				7060721221B5ACCF002DC948 /* DataLoader.swift in Sources */,
 				70F961C4219393F600039CEF /* CardData.swift in Sources */,
 				70D49774218B6B420039472F /* TabView.swift in Sources */,
@@ -416,6 +423,7 @@
 				700DA1EB21A8B8E000DEF276 /* EntryParagraph.swift in Sources */,
 				70D67C03218CEE620028652C /* CardCollectionViewController.swift in Sources */,
 				7004E145218A4ECD008A3927 /* LeadingLabel.swift in Sources */,
+				700DA28F21C04ED500F2B495 /* Reachability.swift in Sources */,
 				70763C81218BAA860082DDD6 /* Card.swift in Sources */,
 				70D69D1F21A8D3C900767923 /* Utilities.swift in Sources */,
 				707DACF5218D19A20085F6C8 /* CardEntryViewController.swift in Sources */,

@@ -13,22 +13,17 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    private static var database: Firestore?
-    
-    public static func getDatabase() -> Firestore {
-        return database!
-    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
         let vc = LoadingViewController()
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
-        AppDelegate.database = Firestore.firestore()
-        DataLoader.fetchData(AppDelegate.database!, vc)
+        
+        DataLoader.shared.fetchData(withVC: vc)
         return true
     }
 

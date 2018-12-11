@@ -11,7 +11,6 @@ import UIKit
 class Card: UICollectionViewCell {
     
     private var data: CardData?
-    private var parentViewController: UIViewController?
     
     private let DISTANCE_FROM_SIDES: CGFloat = 15
     private let DISTANCE_BETWEEN_CARDS: CGFloat = 15
@@ -23,9 +22,8 @@ class Card: UICollectionViewCell {
     }
     
     @objc private func didTapCard() {
-        TabBarController.currentTabIndex = TabBarController.subtitleIndexes[(parentViewController as! CardCollectionViewController).getSubtitle()!]!
         let newVC = CardEntryViewController(withData: data!)
-        parentViewController?.present(newVC, animated: false, completion: nil)
+        NavigationViewController.shared.pushViewController(newVC, animated: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -64,9 +62,7 @@ class Card: UICollectionViewCell {
         container.addSubview(imageView)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
-        //imageView.backgroundColor = Colors.highlight
-        
+                
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         
@@ -130,14 +126,10 @@ class Card: UICollectionViewCell {
         leading.topAnchor.constraint(equalTo: title.bottomAnchor).isActive = true
     }
     
-    public func setParentViewController(withViewController vc: UIViewController) {
-        parentViewController = vc
-    }
-    
     public func setData(withData d: CardData) {
         data = d
         title.text = d.getTitle()
-        subtitle.text = d.getSubtitle()
+        subtitle.text = d.getSubtitle().uppercased()
         leading.text = d.getLeading()
         
         let imageUrl = d.getImageUrlString()

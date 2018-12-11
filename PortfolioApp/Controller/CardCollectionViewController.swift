@@ -14,8 +14,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     
     private var subtitle: String?
     private var cardData = [CardData]()
-    private var currentCell = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,7 +41,7 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.subtitle = subtitle
         
-        for data in DataLoader.data[subtitle]! {
+        for data in DataLoader.shared.data[subtitle]! {
             cardData.append(data)
         }
         
@@ -72,17 +71,15 @@ class CardCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 405)
+        return CGSize(width: view.frame.size.width, height: view.frame.size.height / 1.5)
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! Card
         // Configure the cell
         // Iterate over data and set the contents
-        let data = cardData[currentCell]
-        cell.setParentViewController(withViewController: self)
+        let data = cardData[indexPath.row]
         cell.setData(withData: data)
-        currentCell += (currentCell < cardData.count - 1) ? 1 : 0
         return cell
     }
     
