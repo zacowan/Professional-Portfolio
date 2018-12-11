@@ -17,6 +17,7 @@ class NavigationViewController: UINavigationController {
 
         // Do any additional setup after loading the view.
         self.setNavigationBarHidden(true, animated: false)
+        interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate
     }
     
 
