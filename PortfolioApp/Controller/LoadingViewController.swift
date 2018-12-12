@@ -34,6 +34,10 @@ class LoadingViewController: UIViewController {
         
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     @objc private func retryFetchData() {
         loadingView!.showHideRetryButton()
         loadingView!.setLeading("Performing complex mathematical operations...")

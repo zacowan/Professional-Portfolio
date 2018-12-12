@@ -37,6 +37,10 @@ class CardEntryViewController: UIViewController {
         }
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     @objc private func openUrl() {
         if let url = URL(string: href!) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)

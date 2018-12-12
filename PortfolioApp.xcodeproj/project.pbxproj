@@ -131,6 +131,17 @@
 			path = Subclasses;
 			sourceTree = "<group>";
 		};
+		7045A9CA21C0B54800851CF1 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				7004E140218A4837008A3927 /* SplashView.swift */,
+				70D49773218B6B420039472F /* TabView.swift */,
+				707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */,
+				70D12C7D21B5D2D20005ABD2 /* LoadingView.swift */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		709C98122189FA8400207B0E = {
 			isa = PBXGroup;
 			children = (
@@ -193,10 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				7004E13F218A420D008A3927 /* Subclasses */,
-				7004E140218A4837008A3927 /* SplashView.swift */,
-				70D49773218B6B420039472F /* TabView.swift */,
-				707DACF6218D1ADE0085F6C8 /* CardEntryView.swift */,
-				70D12C7D21B5D2D20005ABD2 /* LoadingView.swift */,
+				7045A9CA21C0B54800851CF1 /* View Models */,
 			);
 			path = View;
 			sourceTree = "<group>";

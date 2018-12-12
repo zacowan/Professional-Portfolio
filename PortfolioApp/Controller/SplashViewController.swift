@@ -28,6 +28,10 @@ class SplashViewController: UIViewController {
         button.addTarget(self, action: #selector(closeView), for: .touchUpInside)
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     @objc private func closeView() {
         let vc = NavigationViewController.shared
         present(vc, animated: false, completion: nil)

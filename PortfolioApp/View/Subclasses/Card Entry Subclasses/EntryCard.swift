@@ -20,10 +20,16 @@ class EntryCard: UIView {
     
     init(withCaption caption: String, withImageURL url: String) {
         super.init(frame: CGRect())
-        self.caption.text = caption
+        
+        self.clipsToBounds = true
+        self.layer.cornerRadius = ConstantNumbers.defaultCornerRadius
+        self.backgroundColor = Colors.cardEntryCardBackground
         
         self.addSubview(self.imageView)
         self.addSubview(self.caption)
+        
+        self.caption.text = caption
+        self.imageView.imageFromServerURL(url, placeHolder: UIImage())
     }
     
     func applyConstraints() {
@@ -40,7 +46,7 @@ class EntryCard: UIView {
     private func imageViewConstraints() {
         (imageView as! EntryImage).applyWidthConstraints(withView: self)
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -100).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -60).isActive = true
     }
     
     let caption: UILabel = {
@@ -52,8 +58,8 @@ class EntryCard: UIView {
     }()
     
     private func captionConstraints() {
-        caption.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        caption.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        caption.leftAnchor.constraint(equalTo: self.leftAnchor, constant: ConstantNumbers.distanceFromSides).isActive = true
+        caption.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -ConstantNumbers.distanceFromSides).isActive = true
         caption.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
         caption.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }

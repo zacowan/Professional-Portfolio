@@ -63,8 +63,10 @@ public struct Colors {
     
 }
 
-public struct Sizes {
+public struct ConstantNumbers {
     
     static let defaultCornerRadius: CGFloat = 15
+    
+    static let distanceFromSides: CGFloat = 20
     
 }

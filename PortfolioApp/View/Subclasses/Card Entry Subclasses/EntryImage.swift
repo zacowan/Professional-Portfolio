@@ -20,7 +20,7 @@ class EntryImage: UIImageView {
     
     init(isPng: Bool) {
         super.init(frame: CGRect())
-        self.backgroundColor = isPng ? nil : Colors.cardEntryCardBackground
+        self.backgroundColor = !isPng ? nil : Colors.cardEntryCardBackground
         self.clipsToBounds = true
         self.contentMode = .scaleAspectFill
     }

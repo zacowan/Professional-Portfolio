@@ -79,13 +79,14 @@ class CardEntryView {
             let key = dataPair![0]
             let value = dataPair![1]
             
-            if key.contains("p") {
+            if key.contains("para") {
                 let p = EntryParagraph()
                 p.text = value
                 scrollViewHeight += p.intrinsicContentSize.height
                 item = p
             } else if key.contains("img") {
-                let img = EntryImage(isPng: true)
+                let isPng = (key.contains("Png")) ? true : false
+                let img = EntryImage(isPng: isPng)
                 img.imageFromServerURL(value, placeHolder: UIImage())
                 scrollViewHeight += SUBIMAGE_HEIGHT
                 item = img
@@ -97,12 +98,34 @@ class CardEntryView {
                 item = href
                 hrefButton = href
                 self.href = value
+            } else if key.contains("card") {
+                if key.contains("Image") {
+                    continue
+                }
+                let cardCaption = value
+                let cardImage = orderedEntryData[i + 1]![1]
+                
+                let card = EntryCard(withCaption: cardCaption, withImageURL: cardImage)
+                scrollViewHeight += SUBIMAGE_HEIGHT
+                item = card
+            } else if key.contains("app") {
+                if key.contains("Title") || key.contains("Caption") {
+                    continue
+                }
+                
+                let appLinkImage = value
+                let appLinkTitle = orderedEntryData[i + 1]![1]
+                let appLinkCaption = orderedEntryData[i + 2]![1]
+                
+                let appLink = EntryAppLink(withTitle: appLinkTitle, withCaption: appLinkCaption, withImageURL: appLinkImage)
+                scrollViewHeight += appLink.computedHeight
+                item = appLink
             }
             
             scrollView.addSubview(item)
             item.translatesAutoresizingMaskIntoConstraints = false
             
-            if key.contains("p") {
+            if key.contains("para") {
                 item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
                 item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
             } else if key.contains("img") {
@@ -111,6 +134,15 @@ class CardEntryView {
             } else if key.contains("href") {
                 item.widthAnchor.constraint(equalToConstant: 200).isActive = true
                 item.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+            } else if key.contains("card") {
+                item.heightAnchor.constraint(equalToConstant: SUBIMAGE_HEIGHT).isActive = true
+                item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+                item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+                (item as! EntryCard).applyConstraints()
+            } else if key.contains("app") {
+                item.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+                item.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+                (item as! EntryAppLink).applyConstraints()
             }
 
             if previousItem != nil {
