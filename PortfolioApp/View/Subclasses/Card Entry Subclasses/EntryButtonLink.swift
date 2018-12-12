@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EntryButtonLink: UIView {
+class EntryButtonLink: UIButton {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -19,15 +19,20 @@ class EntryButtonLink: UIView {
     */
     
     var href: String?
-    private let buttonHeight: CGFloat = 150
+    private let BUTTON_HEIGHT: CGFloat = 150
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = Colors.cardEntryCardBackground
-        
-        
-        
+        self.setTitleColor(Colors.FontColors.button, for: .normal)
+        self.layer.cornerRadius = ConstantNumbers.defaultCornerRadius
+    }
+    
+    func finishSetup() {
+        self.heightAnchor.constraint(equalToConstant: BUTTON_HEIGHT).isActive = true
+        self.titleLabel?.font = Fonts.cardEntrySubtitle
+        self.titleLabel?.textAlignment = .left
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,15 +40,11 @@ class EntryButtonLink: UIView {
     }
     
     func setText(withTxt txt: String) {
-        
+        self.setTitle(txt, for: .normal)
     }
     
     func setHref(withURL url: String) {
         self.href = url
-    }
-    
-    func getHeight() -> CGFloat {
-        return self.buttonHeight
     }
 
 }

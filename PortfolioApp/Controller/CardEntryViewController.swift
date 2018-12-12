@@ -12,7 +12,6 @@ class CardEntryViewController: UIViewController {
     
     private var data: CardData?
     private var splashImage: UIImage?
-    private var href: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,21 +29,10 @@ class CardEntryViewController: UIViewController {
         cardEntryView.setData(wtihData: data!, withSplashImage: splashImage!)
         cardEntryView.getExitButton().addTarget(self, action: #selector(exitViewController), for: .touchUpInside)
         
-        let hrefButton = cardEntryView.getHrefButton()
-        if let button = hrefButton {
-            href = cardEntryView.getHref()
-            button.addTarget(self, action: #selector(openUrl), for: .touchUpInside)
-        }
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
-    }
-    
-    @objc private func openUrl() {
-        if let url = URL(string: href!) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
     }
     
     @objc private func exitViewController() {

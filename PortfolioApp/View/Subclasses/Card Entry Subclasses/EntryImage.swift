@@ -18,27 +18,64 @@ class EntryImage: UIView {
     }
     */
     
-    var computedHeight: CGFloat = 0
-    var imageHeight: Int = 100
+    var imageHeight: CGFloat = 100
     var imageURL: String?
+    
+    private let DISTANCE_FROM_TOP_AND_BOTTOM: CGFloat = 40
+    private let DISTANCE_FROM_SIDES: CGFloat = 20
+    private let DISTANCE_BETWEEN: CGFloat = 40
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.clipsToBounds = true
-        self.contentMode = .scaleAspectFill
-    }
-    
-    func applyWidthConstraints(withView view: UIView) {
-        self.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        self.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        self.backgroundColor = Colors.cardEntryCardBackground
+        
+        self.addSubview(self.imageView)
+        self.addSubview(self.caption)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func finishSetup() {
+        imageViewConstraints()
+        captionConstraints()
+        self.bottomAnchor.constraint(equalTo: caption.bottomAnchor, constant: DISTANCE_FROM_TOP_AND_BOTTOM).isActive = true
+        
+        imageView.imageFromServerURL(imageURL!, placeHolder: UIImage())
+    }
+    
+    private let imageView: UIImageView = {
+        let img = UIImageView()
+        img.clipsToBounds = true
+        img.contentMode = .scaleAspectFill
+        img.translatesAutoresizingMaskIntoConstraints = false
+        return img
+    }()
+    
+    private func imageViewConstraints() {
+        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: DISTANCE_FROM_TOP_AND_BOTTOM).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
+    }
+    
+    private let caption: UILabel = {
+        let label = UILabel()
+        label.font = Fonts.cardEntryCaption
+        label.textColor = Colors.FontColors.caption
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private func captionConstraints() {
+        caption.leftAnchor.constraint(equalTo: self.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+        caption.rightAnchor.constraint(equalTo: self.rightAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+        caption.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: DISTANCE_BETWEEN).isActive = true
+    }
+    
     func setImageHeight(withNum num: Int) {
-        self.imageHeight = num
+        self.imageHeight = CGFloat(num)
     }
     
     func setImageURL(withURL url: String) {
@@ -46,7 +83,7 @@ class EntryImage: UIView {
     }
     
     func setCaption(withText txt: String) {
-        
+        self.caption.text = txt
     }
     
 }

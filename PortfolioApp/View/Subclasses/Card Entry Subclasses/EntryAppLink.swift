@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EntryAppLink: UIView {
+class EntryAppLink: UIButton {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,20 +18,20 @@ class EntryAppLink: UIView {
     }
     */
     
-    var computedHeight: CGFloat = 0
     var href: String?
     var imageURL: String?
+    
+    private let DISTANCE_FROM_TOP_AND_BOTTOM: CGFloat = 40
+    private let APP_ICON_SIZE: CGFloat = 150
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.backgroundColor = Colors.cardEntryCardBackground
         
-        self.addSubview(self.imageView)
+        self.addSubview(self.imgView)
         self.addSubview(self.title)
         self.addSubview(self.caption)
-        
-        computedHeight = 250 + self.title.intrinsicContentSize.height + self.caption.intrinsicContentSize.height
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,13 +39,13 @@ class EntryAppLink: UIView {
     }
     
     func applyConstraints() {
-        self.heightAnchor.constraint(equalToConstant: computedHeight).isActive = true
         imageViewConstraints()
         titleConstraints()
         captionConstraints()
+        self.bottomAnchor.constraint(equalTo: caption.bottomAnchor, constant: DISTANCE_FROM_TOP_AND_BOTTOM).isActive = true
     }
     
-    private let imageView: UIImageView = {
+    private let imgView: UIImageView = {
         let img = UIImageView()
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFit
@@ -56,10 +56,10 @@ class EntryAppLink: UIView {
     }()
     
     private func imageViewConstraints() {
-        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 40).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        imgView.topAnchor.constraint(equalTo: self.topAnchor, constant: DISTANCE_FROM_TOP_AND_BOTTOM).isActive = true
+        imgView.heightAnchor.constraint(equalToConstant: APP_ICON_SIZE).isActive = true
+        imgView.widthAnchor.constraint(equalTo: imgView.heightAnchor).isActive = true
+        imgView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private let title: UILabel = {
@@ -73,7 +73,7 @@ class EntryAppLink: UIView {
     
     private func titleConstraints() {
         title.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        title.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
+        title.topAnchor.constraint(equalTo: imgView.bottomAnchor, constant: 20).isActive = true
     }
     
     private let caption: UILabel = {

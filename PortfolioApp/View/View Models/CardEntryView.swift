@@ -19,16 +19,12 @@ class CardEntryView {
     private let DISTANCE_BETWEEN_TITLE_AND_CONTENT: CGFloat = 60
     private let DISTANCE_FROM_BOTTOM: CGFloat = 20
     private var IMAGE_HEIGHT: CGFloat = 400
-    private var SUBIMAGE_HEIGHT: CGFloat = 250
     
     private var scrollViewHeight: CGFloat = 0
-    private var hrefButton: UIButton?
-    private var href: String?
     
     init(withView view: UIView) {
         // Setup
         IMAGE_HEIGHT = view.frame.size.height / 1.5
-        SUBIMAGE_HEIGHT = view.frame.size.height / 2.5
         scrollViewHeight += IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.intrinsicContentSize.height + titleLabel.intrinsicContentSize.height
         self.view = view
         elements += [scrollView, subtitleLabel, titleLabel, splashImage, exitButton]
@@ -41,14 +37,6 @@ class CardEntryView {
     
     func getExitButton() -> UIButton {
         return exitButton
-    }
-    
-    func getHrefButton() -> UIButton? {
-        return hrefButton
-    }
-    
-    func getHref() -> String? {
-        return href
     }
     
     func getElements() -> [UIView] {
@@ -84,27 +72,52 @@ class CardEntryView {
                 dataValue = value
             }
             
-            dataValue!.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(dataValue!)
+            let currentElement = dataValue!
             
-            // Perform any additional setup and calculate the approximate height of the scroll view
+            currentElement.translatesAutoresizingMaskIntoConstraints = false
+            scrollView.addSubview(currentElement)
+            
+            // Perform any additional setup and constraints
             if dataKey!.contains("paragraph") {
-                scrollViewHeight += dataValue!.intrinsicContentSize.height
+                currentElement.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+                currentElement.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
             } else if dataKey!.contains("image") {
-                scrollViewHeight += (dataValue! as! EntryImage).computedHeight
+                currentElement.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+                currentElement.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+                (currentElement as! EntryImage).finishSetup()
             } else if dataKey!.contains("buttonLink") {
-                scrollViewHeight += (dataValue! as! EntryButtonLink).getHeight()
+                currentElement.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+                currentElement.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+                (currentElement as! EntryButtonLink).finishSetup()
             } else if dataKey!.contains("appLink") {
-                scrollViewHeight += (dataValue! as! EntryAppLink).computedHeight
+                currentElement.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+                currentElement.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+                (currentElement as! EntryAppLink).applyConstraints()
+                (currentElement as! EntryAppLink).addTarget(scrollView, action: #selector(openURL(sender:)), for: .touchUpInside)
             }
+            
+            scrollViewHeight += currentElement.intrinsicContentSize.height
             
             if previousElement != nil {
-                
+                currentElement.topAnchor.constraint(equalTo: previousElement!.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS).isActive = true
+                scrollViewHeight += DISTANCE_BETWEEN_ITEMS
             } else {
-                
+                currentElement.topAnchor.constraint(equalTo: self.subtitleLabel.bottomAnchor, constant: DISTANCE_BETWEEN_TITLE_AND_CONTENT).isActive = true
+                scrollViewHeight += DISTANCE_BETWEEN_TITLE_AND_CONTENT
             }
             
-            scrollView.contentSize.height = scrollViewHeight
+            previousElement = currentElement
+        }
+        
+        scrollViewHeight += DISTANCE_FROM_BOTTOM
+        scrollView.contentSize.height = 2000
+    }
+    
+    @objc private func openURL(sender: EntryAppLink) {
+        let href = sender.href!
+        
+        if let url = URL(string: href) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
@@ -168,7 +181,7 @@ class CardEntryView {
     }
     
     private let exitButton: UIButton = {
-        let button = ExitButton()
+        let button = ExitButton(type: .system)
         button.titleLabel?.font = Fonts.button
         return button
     }()

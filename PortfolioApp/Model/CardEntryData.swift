@@ -43,7 +43,7 @@ class CardEntryData {
                 newValue = image
             } else if dataKey.contains("buttonLink") {
                 // Create the button link
-                let buttonLink = EntryButtonLink()
+                let buttonLink = EntryButtonLink(type: .system)
                 let properties = (dataValue as! [String : String])
                 
                 for (propertyKey, propertyValue) in properties {
