@@ -19,9 +19,11 @@ class EntryAppLink: UIView {
     */
     
     var computedHeight: CGFloat = 0
+    var href: String?
+    var imageURL: String?
     
-    init(withTitle title: String, withCaption caption: String, withImageURL url: String) {
-        super.init(frame: CGRect())
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         self.backgroundColor = Colors.cardEntryCardBackground
         
@@ -29,9 +31,6 @@ class EntryAppLink: UIView {
         self.addSubview(self.title)
         self.addSubview(self.caption)
         
-        self.caption.text = caption
-        self.title.text = title
-        self.imageView.imageFromServerURL(url, placeHolder: UIImage())
         computedHeight = 250 + self.title.intrinsicContentSize.height + self.caption.intrinsicContentSize.height
     }
     
@@ -46,7 +45,7 @@ class EntryAppLink: UIView {
         captionConstraints()
     }
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let img = UIImageView()
         img.clipsToBounds = true
         img.contentMode = .scaleAspectFit
@@ -63,7 +62,7 @@ class EntryAppLink: UIView {
         imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
-    let title: UILabel = {
+    private let title: UILabel = {
         let label = UILabel()
         label.font = Fonts.cardEntryTitle
         label.textColor = Colors.highlight
@@ -77,7 +76,7 @@ class EntryAppLink: UIView {
         title.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20).isActive = true
     }
     
-    let caption: UILabel = {
+    private let caption: UILabel = {
         let label = UILabel()
         label.font = Fonts.cardEntrySubtitle
         label.textColor = Colors.FontColors.subtitle
@@ -89,6 +88,22 @@ class EntryAppLink: UIView {
     private func captionConstraints() {
         caption.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         caption.topAnchor.constraint(equalTo: title.bottomAnchor).isActive = true
+    }
+    
+    func setCaption(withText txt: String) {
+        self.caption.text = txt
+    }
+    
+    func setTitle(withText txt: String) {
+        self.title.text = txt
+    }
+    
+    func setImageURL(withImageURL url: String) {
+        self.imageURL = url
+    }
+    
+    func setHref(withURL url: String) {
+        self.href = url
     }
 
 }

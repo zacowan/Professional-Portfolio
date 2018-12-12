@@ -16,17 +16,17 @@ class Utilities {
     // Used in conjunction with the UIImageView URL extension
     let imageCache = NSCache<NSString, UIImage>()
     
-    func getOrderedDictionary(fromDic dic: [String : String]) -> [Int : [String]] {
-        var orderedDictionary: [Int : [String]] = [:]
+    func getOrderedDictionary(fromDic dic: [String : UIView]) -> [Int : [String : UIView]] {
+        var orderedDictionary: [Int : [String : UIView]] = [:]
         for index in 0 ..< dic.count {
             let key = findItemInDictionary(withDic: dic, withIndex: index)!
             let value = dic[key]!
-            orderedDictionary[index] = [key, value]
+            orderedDictionary[index] = [key : value]
         }
         return orderedDictionary
     }
     
-    private func findItemInDictionary(withDic dic: [String : String], withIndex i: Int) -> String? {
+    private func findItemInDictionary(withDic dic: [String : UIView], withIndex i: Int) -> String? {
         for (key, _) in dic {
             if key.contains("\(i)") {
                 return key

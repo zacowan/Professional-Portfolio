@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EntryImage: UIImageView {
+class EntryImage: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.
@@ -18,9 +18,12 @@ class EntryImage: UIImageView {
     }
     */
     
-    init(isPng: Bool) {
-        super.init(frame: CGRect())
-        self.backgroundColor = !isPng ? nil : Colors.cardEntryCardBackground
+    var computedHeight: CGFloat = 0
+    var imageHeight: Int = 100
+    var imageURL: String?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         self.clipsToBounds = true
         self.contentMode = .scaleAspectFill
     }
@@ -32,6 +35,18 @@ class EntryImage: UIImageView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setImageHeight(withNum num: Int) {
+        self.imageHeight = num
+    }
+    
+    func setImageURL(withURL url: String) {
+        self.imageURL = url
+    }
+    
+    func setCaption(withText txt: String) {
+        
     }
     
 }

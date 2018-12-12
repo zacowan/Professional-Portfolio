@@ -35,7 +35,7 @@ class CardData {
         entryData = CardEntryData(withDataFromFirebase: data)
     }
     
-    func getEntryData() -> [String : String] {
+    func getEntryData() -> [String : UIView] {
         return entryData!.getData()
     }
     

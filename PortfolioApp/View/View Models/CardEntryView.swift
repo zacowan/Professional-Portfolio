@@ -71,92 +71,41 @@ class CardEntryView {
         
         let entryData = data.getEntryData()
         let orderedEntryData = Utilities.shared.getOrderedDictionary(fromDic: entryData)
-        var previousItem: UIView?
+        
+        var previousElement: UIView?
         
         for i in 0 ..< orderedEntryData.count {
-            var item = UIView()
-            let dataPair = orderedEntryData[i]
-            let key = dataPair![0]
-            let value = dataPair![1]
+            let dataDictionary = orderedEntryData[i]
+            var dataKey: String?
+            var dataValue: UIView?
             
-            if key.contains("para") {
-                let p = EntryParagraph()
-                p.text = value
-                scrollViewHeight += p.intrinsicContentSize.height
-                item = p
-            } else if key.contains("img") {
-                let isPng = (key.contains("Png")) ? true : false
-                let img = EntryImage(isPng: isPng)
-                img.imageFromServerURL(value, placeHolder: UIImage())
-                scrollViewHeight += SUBIMAGE_HEIGHT
-                item = img
-            } else if key.contains("href") {
-                let href = RoundButton(type: .system)
-                href.setTitle("View", for: .normal)
-                href.titleLabel?.font = Fonts.button
-                scrollViewHeight += href.frame.size.height
-                item = href
-                hrefButton = href
-                self.href = value
-            } else if key.contains("card") {
-                if key.contains("Image") {
-                    continue
-                }
-                let cardCaption = value
-                let cardImage = orderedEntryData[i + 1]![1]
-                
-                let card = EntryCard(withCaption: cardCaption, withImageURL: cardImage)
-                scrollViewHeight += SUBIMAGE_HEIGHT
-                item = card
-            } else if key.contains("app") {
-                if key.contains("Title") || key.contains("Caption") {
-                    continue
-                }
-                
-                let appLinkImage = value
-                let appLinkTitle = orderedEntryData[i + 1]![1]
-                let appLinkCaption = orderedEntryData[i + 2]![1]
-                
-                let appLink = EntryAppLink(withTitle: appLinkTitle, withCaption: appLinkCaption, withImageURL: appLinkImage)
-                scrollViewHeight += appLink.computedHeight
-                item = appLink
+            for (key, value) in dataDictionary! {
+                dataKey = key
+                dataValue = value
             }
             
-            scrollView.addSubview(item)
-            item.translatesAutoresizingMaskIntoConstraints = false
+            dataValue!.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(dataValue!)
             
-            if key.contains("para") {
-                item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-                item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
-            } else if key.contains("img") {
-                item.heightAnchor.constraint(equalToConstant: SUBIMAGE_HEIGHT).isActive = true
-                (item as! EntryImage).applyWidthConstraints(withView: view)
-            } else if key.contains("href") {
-                item.widthAnchor.constraint(equalToConstant: 200).isActive = true
-                item.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
-            } else if key.contains("card") {
-                item.heightAnchor.constraint(equalToConstant: SUBIMAGE_HEIGHT).isActive = true
-                item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-                item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
-                (item as! EntryCard).applyConstraints()
-            } else if key.contains("app") {
-                item.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-                item.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-                (item as! EntryAppLink).applyConstraints()
+            // Perform any additional setup and calculate the approximate height of the scroll view
+            if dataKey!.contains("paragraph") {
+                scrollViewHeight += dataValue!.intrinsicContentSize.height
+            } else if dataKey!.contains("image") {
+                scrollViewHeight += (dataValue! as! EntryImage).computedHeight
+            } else if dataKey!.contains("buttonLink") {
+                scrollViewHeight += (dataValue! as! EntryButtonLink).getHeight()
+            } else if dataKey!.contains("appLink") {
+                scrollViewHeight += (dataValue! as! EntryAppLink).computedHeight
             }
-
-            if previousItem != nil {
-                item.topAnchor.constraint(equalTo: previousItem!.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS).isActive = true
-                scrollViewHeight += DISTANCE_BETWEEN_ITEMS
+            
+            if previousElement != nil {
+                
             } else {
-                item.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: DISTANCE_BETWEEN_TITLE_AND_CONTENT).isActive = true
-                scrollViewHeight += DISTANCE_BETWEEN_TITLE_AND_CONTENT
+                
             }
-            previousItem = item
+            
+            scrollView.contentSize.height = scrollViewHeight
         }
-        scrollViewHeight += DISTANCE_BETWEEN_ITEMS * 2
-        scrollViewHeight += DISTANCE_FROM_BOTTOM
-        scrollView.contentSize.height = scrollViewHeight
     }
     
     // Private functions (UI setup and constraint setup)

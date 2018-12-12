@@ -37,9 +37,8 @@
 		70D67C03218CEE620028652C /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D67C02218CEE620028652C /* CardCollectionViewController.swift */; };
 		70D69D1F21A8D3C900767923 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D69D1E21A8D3C900767923 /* Utilities.swift */; };
 		70EBC3B521C0861300C966AD /* EntryImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EBC3B421C0861300C966AD /* EntryImage.swift */; };
-		70EBC3B721C0864200C966AD /* EntryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EBC3B621C0864200C966AD /* EntryCard.swift */; };
 		70EBC3B921C0867900C966AD /* EntryAppLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EBC3B821C0867900C966AD /* EntryAppLink.swift */; };
-		70EBC3BB21C0868E00C966AD /* EntryLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EBC3BA21C0868E00C966AD /* EntryLink.swift */; };
+		70EBC3BB21C0868E00C966AD /* EntryButtonLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70EBC3BA21C0868E00C966AD /* EntryButtonLink.swift */; };
 		70F961C4219393F600039CEF /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70F961C3219393F600039CEF /* CardData.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,9 +88,8 @@
 		70D67C02218CEE620028652C /* CardCollectionViewController.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
 		70D69D1E21A8D3C900767923 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		70EBC3B421C0861300C966AD /* EntryImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryImage.swift; sourceTree = "<group>"; };
-		70EBC3B621C0864200C966AD /* EntryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryCard.swift; sourceTree = "<group>"; };
 		70EBC3B821C0867900C966AD /* EntryAppLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryAppLink.swift; sourceTree = "<group>"; };
-		70EBC3BA21C0868E00C966AD /* EntryLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryLink.swift; sourceTree = "<group>"; };
+		70EBC3BA21C0868E00C966AD /* EntryButtonLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryButtonLink.swift; sourceTree = "<group>"; };
 		70F961C3219393F600039CEF /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CardData.swift; path = PortfolioApp/Model/CardData.swift; sourceTree = SOURCE_ROOT; };
 		936FE286CE24D2BF797BEEBA /* Pods-PortfolioApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PortfolioApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PortfolioApp/Pods-PortfolioApp.release.xcconfig"; sourceTree = "<group>"; };
 		E36F627D35A977BEA94996F0 /* Pods-PortfolioAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PortfolioAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PortfolioAppTests/Pods-PortfolioAppTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -227,9 +225,8 @@
 				7048843821A8DC85008C356E /* ExitButton.swift */,
 				700DA1EA21A8B8E000DEF276 /* EntryParagraph.swift */,
 				70EBC3B421C0861300C966AD /* EntryImage.swift */,
-				70EBC3B621C0864200C966AD /* EntryCard.swift */,
+				70EBC3BA21C0868E00C966AD /* EntryButtonLink.swift */,
 				70EBC3B821C0867900C966AD /* EntryAppLink.swift */,
-				70EBC3BA21C0868E00C966AD /* EntryLink.swift */,
 			);
 			path = "Card Entry Subclasses";
 			sourceTree = "<group>";
@@ -437,7 +434,7 @@
 			files = (
 				700DA29121C0521500F2B495 /* NavigationViewController.swift in Sources */,
 				7060721221B5ACCF002DC948 /* DataLoader.swift in Sources */,
-				70EBC3BB21C0868E00C966AD /* EntryLink.swift in Sources */,
+				70EBC3BB21C0868E00C966AD /* EntryButtonLink.swift in Sources */,
 				70F961C4219393F600039CEF /* CardData.swift in Sources */,
 				70D49774218B6B420039472F /* TabView.swift in Sources */,
 				7004E147218A504D008A3927 /* RoundButton.swift in Sources */,
@@ -461,7 +458,6 @@
 				70D12C8021B5D3450005ABD2 /* LoadingViewController.swift in Sources */,
 				7004E143218A4BE4008A3927 /* SubtitleLabel.swift in Sources */,
 				70EBC3B921C0867900C966AD /* EntryAppLink.swift in Sources */,
-				70EBC3B721C0864200C966AD /* EntryCard.swift in Sources */,
 				709C98422189FB2600207B0E /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
