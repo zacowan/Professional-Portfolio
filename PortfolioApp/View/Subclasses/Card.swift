@@ -47,7 +47,7 @@ class Card: UICollectionViewCell {
         
         container.clipsToBounds = true
         container.backgroundColor = Colors.cardBackground
-        container.layer.cornerRadius = 25
+        container.layer.cornerRadius = Sizes.defaultCornerRadius
         
         container.leftAnchor.constraint(equalTo: self.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
         container.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true

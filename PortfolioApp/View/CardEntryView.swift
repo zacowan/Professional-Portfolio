@@ -85,11 +85,8 @@ class CardEntryView {
                 scrollViewHeight += p.intrinsicContentSize.height
                 item = p
             } else if key.contains("img") {
-                let img = UIImageView()
-                img.layer.cornerRadius = 25
+                let img = EntryImage(isPng: true)
                 img.imageFromServerURL(value, placeHolder: UIImage())
-                img.contentMode = .scaleAspectFill
-                img.clipsToBounds = true
                 scrollViewHeight += SUBIMAGE_HEIGHT
                 item = img
             } else if key.contains("href") {
@@ -110,8 +107,7 @@ class CardEntryView {
                 item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
             } else if key.contains("img") {
                 item.heightAnchor.constraint(equalToConstant: SUBIMAGE_HEIGHT).isActive = true
-                item.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-                item.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+                (item as! EntryImage).applyWidthConstraints(withView: view)
             } else if key.contains("href") {
                 item.widthAnchor.constraint(equalToConstant: 200).isActive = true
                 item.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true

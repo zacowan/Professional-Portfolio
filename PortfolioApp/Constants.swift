@@ -52,7 +52,7 @@ public struct Colors {
     
     // General
     static let background = #colorLiteral(red: 0.937254902, green: 0.937254902, blue: 0.9568627451, alpha: 1)
-    static let highlight = #colorLiteral(red: 1, green: 0.231372549, blue: 0.1882352941, alpha: 1)
+    static let highlight = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
     
     // Card
     static let cardBackground = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -60,5 +60,11 @@ public struct Colors {
     // Card entries
     static let cardEntryBackground = Colors.cardBackground
     static let cardEntryCardBackground = Colors.background
+    
+}
+
+public struct Sizes {
+    
+    static let defaultCornerRadius: CGFloat = 15
     
 }
