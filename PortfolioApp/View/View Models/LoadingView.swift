@@ -24,7 +24,7 @@ class LoadingView {
     
     // Values for quick changes
     private let DISTANCE_FROM_SIDES: CGFloat = 30
-    private let DISTANCE_BETWEEN: CGFloat = 40
+    private let DISTANCE_BETWEEN: CGFloat = 20
     
     init(withView view: UIView) {
         self.view = view
@@ -32,7 +32,7 @@ class LoadingView {
         for element in elements {
             element.translatesAutoresizingMaskIntoConstraints = false
         }
-        self.leadingText.text = "\(loadingStatements[Int.random(in: 0 ..< loadingStatements.count)])..."
+        self.displayLoadingMessage()
     }
     
     // Public functions
@@ -61,6 +61,10 @@ class LoadingView {
     
     func startStopLoadingIndicator() {
         loadingIndicator.isAnimating ? loadingIndicator.stopAnimating() : loadingIndicator.startAnimating()
+    }
+    
+    func displayLoadingMessage() {
+        self.leadingText.text = "\(loadingStatements[Int.random(in: 0 ..< loadingStatements.count)])..."
     }
     
     // Private functions (UI setup and constraint setup)

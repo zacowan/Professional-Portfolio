@@ -40,7 +40,7 @@ class LoadingViewController: UIViewController {
     
     @objc private func retryFetchData() {
         loadingView!.showHideRetryButton()
-        loadingView!.setLeading("Performing complex mathematical operations...")
+        loadingView!.displayLoadingMessage()
         loadingView!.startStopLoadingIndicator()
         DataLoader.shared.fetchData(withVC: self)
     }
