@@ -16,6 +16,12 @@ class LoadingView {
     private let view: UIView
     private var elements = [UIView]()
     
+    private let loadingStatements: [String] = ["Performing complex mathematical operations",
+                                               "Initiating warp drive",
+                                               "Analyzing logical fallacies",
+                                               "Initiating J.A.R.V.I.S. protocol",
+                                               "Accounting for technicalities"]
+    
     // Values for quick changes
     private let DISTANCE_FROM_SIDES: CGFloat = 30
     private let DISTANCE_BETWEEN: CGFloat = 40
@@ -26,6 +32,7 @@ class LoadingView {
         for element in elements {
             element.translatesAutoresizingMaskIntoConstraints = false
         }
+        self.leadingText.text = "\(loadingStatements[Int.random(in: 0 ..< loadingStatements.count)])..."
     }
     
     // Public functions
