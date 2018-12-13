@@ -33,7 +33,6 @@ class EntryButtonLink: UIButton {
     func finishSetup() {
         self.heightAnchor.constraint(equalToConstant: BUTTON_HEIGHT).isActive = true
         self.titleLabel?.font = Fonts.cardEntryButtonLink
-        self.titleLabel?.textAlignment = .left
     }
     
     required init?(coder aDecoder: NSCoder) {

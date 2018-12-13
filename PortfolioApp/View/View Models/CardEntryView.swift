@@ -81,7 +81,7 @@ class CardEntryView {
             if dataKey!.contains("paragraph") {
                 currentElement.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
                 currentElement.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
-                scrollViewHeight += (currentElement as! EntryParagraph).intrinsicContentSize.height
+                scrollViewHeight += (currentElement as! EntryParagraph).getComputedHeight()
             } else if dataKey!.contains("image") {
                 currentElement.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
                 currentElement.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true

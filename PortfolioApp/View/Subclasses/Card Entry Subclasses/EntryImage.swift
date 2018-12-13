@@ -57,6 +57,8 @@ class EntryImage: UIView {
     private func imageViewConstraints() {
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: imageHeight).isActive = true
+        imageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        imageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
     }
     
     private let captionContainer: UIView = {
@@ -84,7 +86,7 @@ class EntryImage: UIView {
     
     private func captionConstraints() {
         caption.leftAnchor.constraint(equalTo: captionContainer.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-        caption.rightAnchor.constraint(equalTo: captionContainer.rightAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
+        caption.rightAnchor.constraint(equalTo: captionContainer.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
         caption.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: DISTANCE_BETWEEN).isActive = true
     }
     
@@ -101,7 +103,7 @@ class EntryImage: UIView {
     }
     
     func getComputedHeight() -> CGFloat {
-        return imageHeight + caption.intrinsicContentSize.height + (DISTANCE_BETWEEN * 2)
+        return imageHeight + caption.bounds.standardized.height + (DISTANCE_BETWEEN * 2)
     }
     
 }

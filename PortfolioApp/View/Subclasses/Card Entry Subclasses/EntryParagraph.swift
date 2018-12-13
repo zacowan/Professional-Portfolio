@@ -34,5 +34,9 @@ class EntryParagraph: UILabel {
         self.numberOfLines = 12
         self.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
     }
+    
+    func getComputedHeight() -> CGFloat {
+        return self.bounds.size.height
+    }
 
 }
