@@ -22,8 +22,10 @@ class Card: UICollectionViewCell {
     }
     
     @objc private func didTapCard() {
-        let newVC = CardEntryViewController(withData: data!, withSplashImage: imageView.image!)
-        NavigationViewController.shared.pushViewController(newVC, animated: true)
+        if self.imageView.image != nil {
+            let newVC = CardEntryViewController(withData: data!, withSplashImage: imageView.image!)
+            NavigationViewController.shared.pushViewController(newVC, animated: true)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

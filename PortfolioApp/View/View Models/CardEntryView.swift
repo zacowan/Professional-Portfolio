@@ -81,22 +81,25 @@ class CardEntryView {
             if dataKey!.contains("paragraph") {
                 currentElement.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
                 currentElement.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+                scrollViewHeight += (currentElement as! EntryParagraph).intrinsicContentSize.height
             } else if dataKey!.contains("image") {
                 currentElement.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
                 currentElement.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
                 (currentElement as! EntryImage).finishSetup()
+                scrollViewHeight += (currentElement as! EntryImage).getComputedHeight()
             } else if dataKey!.contains("buttonLink") {
-                currentElement.leftAnchor.constraint(equalTo: view.leftAnchor, constant: DISTANCE_FROM_SIDES).isActive = true
-                currentElement.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -DISTANCE_FROM_SIDES).isActive = true
+                currentElement.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 70).isActive = true
+                currentElement.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -70).isActive = true
                 (currentElement as! EntryButtonLink).finishSetup()
+                (currentElement as! EntryButtonLink).addTarget(nil, action: #selector(CardEntryViewController.openButtonURL(_:)), for: .touchUpInside)
+                scrollViewHeight += (currentElement as! EntryButtonLink).getComputedHeight()
             } else if dataKey!.contains("appLink") {
                 currentElement.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
                 currentElement.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-                (currentElement as! EntryAppLink).applyConstraints()
-                (currentElement as! EntryAppLink).addTarget(scrollView, action: #selector(openURL(sender:)), for: .touchUpInside)
+                (currentElement as! EntryAppLink).finishSetup()
+                (currentElement as! EntryAppLink).addTarget(nil, action: #selector(CardEntryViewController.openAppURL(_:)), for: .touchUpInside)
+                scrollViewHeight += (currentElement as! EntryAppLink).getComputedHeight()
             }
-            
-            scrollViewHeight += currentElement.intrinsicContentSize.height
             
             if previousElement != nil {
                 currentElement.topAnchor.constraint(equalTo: previousElement!.bottomAnchor, constant: DISTANCE_BETWEEN_ITEMS).isActive = true
@@ -110,15 +113,7 @@ class CardEntryView {
         }
         
         scrollViewHeight += DISTANCE_FROM_BOTTOM
-        scrollView.contentSize.height = 2000
-    }
-    
-    @objc private func openURL(sender: EntryAppLink) {
-        let href = sender.href!
-        
-        if let url = URL(string: href) {
-            UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        }
+        scrollView.contentSize.height = scrollViewHeight
     }
     
     // Private functions (UI setup and constraint setup)

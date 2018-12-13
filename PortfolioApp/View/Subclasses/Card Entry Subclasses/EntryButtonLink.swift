@@ -19,19 +19,20 @@ class EntryButtonLink: UIButton {
     */
     
     var href: String?
-    private let BUTTON_HEIGHT: CGFloat = 150
+    private let BUTTON_HEIGHT: CGFloat = 70
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.titleLabel?.textAlignment = .left
         self.backgroundColor = Colors.cardEntryCardBackground
-        self.setTitleColor(Colors.FontColors.button, for: .normal)
-        self.layer.cornerRadius = ConstantNumbers.defaultCornerRadius
+        self.setTitleColor(Colors.highlight, for: .normal)
+        self.layer.cornerRadius = ConstantNumbers.defaultCornerRadius / 2
     }
     
     func finishSetup() {
         self.heightAnchor.constraint(equalToConstant: BUTTON_HEIGHT).isActive = true
-        self.titleLabel?.font = Fonts.cardEntrySubtitle
+        self.titleLabel?.font = Fonts.cardEntryButtonLink
         self.titleLabel?.textAlignment = .left
     }
     
@@ -45,6 +46,10 @@ class EntryButtonLink: UIButton {
     
     func setHref(withURL url: String) {
         self.href = url
+    }
+    
+    func getComputedHeight() -> CGFloat {
+        return BUTTON_HEIGHT
     }
 
 }

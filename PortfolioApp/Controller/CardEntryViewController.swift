@@ -31,6 +31,22 @@ class CardEntryViewController: UIViewController {
         
     }
     
+    @objc func openAppURL(_ sender: EntryAppLink) {
+        let href = sender.href!
+        
+        if let url = URL(string: href) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
+    @objc func openButtonURL(_ sender: EntryButtonLink) {
+        let href = sender.href!
+        
+        if let url = URL(string: href) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }

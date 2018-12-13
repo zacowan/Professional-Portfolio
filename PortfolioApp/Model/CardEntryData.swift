@@ -59,7 +59,7 @@ class CardEntryData {
                 newValue = buttonLink
             } else if dataKey.contains("appLink") {
                 // Create the app link
-                let appLink = EntryAppLink()
+                let appLink = EntryAppLink(type: .system)
                 let properties = (dataValue as! [String : String])
                 
                 for (propertyKey, propertyValue) in properties {

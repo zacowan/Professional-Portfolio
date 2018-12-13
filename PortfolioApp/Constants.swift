@@ -31,6 +31,7 @@ public struct Fonts {
     static let cardEntrySubtitle = Fonts.cardSubtitle
     static let cardEntryBody = UIFont(name: "AvenirNext-Medium", size: 15)
     static let cardEntryCaption = UIFont(name: "AvenirNext-Regular", size: 13)
+    static let cardEntryButtonLink = UIFont(name: "AvenirNext-Bold", size: 18)
     
 }
 
