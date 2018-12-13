@@ -133,7 +133,7 @@ class EntryAppLink: UIButton {
     }
     
     func getComputedHeight() -> CGFloat {
-        return (DISTANCE_FROM_TOP_AND_BOTTOM * 2) + APP_ICON_SIZE + DISTANCE_BETWEEN + title.intrinsicContentSize.height + caption.intrinsicContentSize.height + BUTTON_HEIGHT
+        return (DISTANCE_FROM_TOP_AND_BOTTOM * 2) + APP_ICON_SIZE + DISTANCE_BETWEEN + title.calculateHeightBasedOnText(width: NavigationViewController.shared.view.frame.standardized.width) + caption.calculateHeightBasedOnText(width: NavigationViewController.shared.view.frame.standardized.width) + BUTTON_HEIGHT
     }
 
 }

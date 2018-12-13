@@ -25,7 +25,7 @@ class CardEntryView {
     init(withView view: UIView) {
         // Setup
         IMAGE_HEIGHT = view.frame.size.height / 1.5
-        scrollViewHeight += IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.intrinsicContentSize.height + titleLabel.intrinsicContentSize.height
+        scrollViewHeight += IMAGE_HEIGHT + DISTANCE_BETWEEN_ITEMS + subtitleLabel.calculateHeightBasedOnText(width: NavigationViewController.shared.view.frame.standardized.width) + titleLabel.calculateHeightBasedOnText(width: NavigationViewController.shared.view.frame.standardized.width)
         self.view = view
         elements += [scrollView, subtitleLabel, titleLabel, splashImage, exitButton]
         for element in elements {

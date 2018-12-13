@@ -103,7 +103,7 @@ class EntryImage: UIView {
     }
     
     func getComputedHeight() -> CGFloat {
-        return imageHeight + caption.bounds.standardized.height + (DISTANCE_BETWEEN * 2)
+        return imageHeight + caption.calculateHeightBasedOnText(width: NavigationViewController.shared.view.frame.standardized.width - (DISTANCE_FROM_SIDES * 2)) + (DISTANCE_BETWEEN * 2)
     }
     
 }

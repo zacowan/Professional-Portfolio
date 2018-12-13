@@ -37,6 +37,23 @@ class Utilities {
     
 }
 
+// Idea for this code retrieved from: https://stackoverflow.com/questions/25180443/adjust-uilabel-height-to-text
+
+extension UILabel {
+    
+    func calculateHeightBasedOnText(width: CGFloat) -> CGFloat {
+        let newLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        newLabel.numberOfLines = self.numberOfLines
+        newLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        newLabel.font = self.font
+        newLabel.text = self.text!
+        
+        newLabel.sizeToFit()
+        return newLabel.frame.standardized.height
+    }
+    
+}
+
 // Source for below code: https://stackoverflow.com/questions/37018916/swift-async-load-image
 
 extension UIImageView {

@@ -36,7 +36,7 @@ class EntryParagraph: UILabel {
     }
     
     func getComputedHeight() -> CGFloat {
-        return self.bounds.size.height
+        return self.calculateHeightBasedOnText(width: NavigationViewController.shared.view.frame.standardized.width - 40)
     }
 
 }
